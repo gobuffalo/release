@@ -23,6 +23,9 @@ ci-test: deps
 release-test:
 	$(GO_BIN) test -tags ${TAGS} -race ./...
 
+lint:
+	gometalinter --vendor ./... --deadline=1m --skip=internal
+
 update:
 	$(GO_BIN) get -u
 	$(GO_BIN) mod tidy
