@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/gobuffalo/genny"
+	"github.com/gobuffalo/release/genny/goreleaser"
 	"github.com/gobuffalo/release/genny/makefile"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
@@ -25,6 +26,14 @@ var initCmd = &cobra.Command{
 		}
 
 		g, err := makefile.New(&makefile.Options{
+			Force: initOptions.force,
+		})
+		if err != nil {
+			return errors.WithStack(err)
+		}
+		run.With(g)
+
+		g, err = goreleaser.New(&goreleaser.Options{
 			Force: initOptions.force,
 		})
 		if err != nil {

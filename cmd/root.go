@@ -57,7 +57,21 @@ var rootCmd = &cobra.Command{
 			return errors.WithStack(err)
 		}
 		run.With(g)
-		return confirm(fmt.Sprintf("are you sure you want to release %q (%s)?\n", opts.Version, opts.Branch), releaseOptions.yesToAll, run.Run)
+		err = confirm(fmt.Sprintf("are you sure you want to release %q (%s)?\n", opts.Version, opts.Branch), releaseOptions.yesToAll, run.Run)
+		if err != nil {
+			// attempt to remove the tag as something went wrong
+			c := exec.Command("git", "push", "origin", ":"+opts.Version)
+			if err := run.Exec(c); err != nil {
+				run.Logger.Error(err)
+			}
+
+			c = exec.Command("git", "tag", "-d", opts.Version)
+			if err := run.Exec(c); err != nil {
+				run.Logger.Error(err)
+			}
+			return errors.WithStack(err)
+		}
+		return nil
 	},
 }
 
