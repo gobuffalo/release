@@ -36,8 +36,23 @@ func New(opts *Options) (*genny.Generator, error) {
 
 	g.RunFn(runGoreleaser)
 
+	if len(opts.semVersion.Prerelease()) != 0 {
+		g.RunFn(func(r *genny.Runner) error {
+			r.Logger.Warn(preWarning)
+			return nil
+		})
+	}
 	return g, nil
 }
+
+const preWarning = `!!!!!!!!!!!!!!! WARNING !!!!!!!!!!!!!!!
+
+**THIS IS A PRE-RELEASE**
+
+You MUST **MANUALLY** go to GitHub and edit the release accordingly!!!
+
+NOTE: PRs welcome to make this happen automatically. :)
+`
 
 /*
 * confirm GITHUB_TOKEN

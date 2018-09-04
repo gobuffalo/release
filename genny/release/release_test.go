@@ -30,7 +30,7 @@ func Test_New(t *testing.T) {
 
 	res := run.Results()
 
-	r.Len(res.Commands, 3)
+	r.Len(res.Commands, 8)
 
 	c := res.Commands[0]
 	r.Equal("go get -v github.com/gobuffalo/packr/packr", strings.Join(c.Args, " "))

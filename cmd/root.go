@@ -57,7 +57,7 @@ var rootCmd = &cobra.Command{
 			return errors.WithStack(err)
 		}
 		run.With(g)
-		return confirm(fmt.Sprintf("are you sure you want to release %q?\n", opts.Version), releaseOptions.yesToAll, run.Run)
+		return confirm(fmt.Sprintf("are you sure you want to release %q (%s)?\n", opts.Version, opts.Branch), releaseOptions.yesToAll, run.Run)
 	},
 }
 

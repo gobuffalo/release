@@ -11,6 +11,7 @@ type Options struct {
 	Version     string
 	Branch      string
 	VersionFile string
+	semVersion  *semver.Version
 	// add your stuff here
 }
 
@@ -22,9 +23,11 @@ func (opts *Options) Validate() error {
 			return errors.New("you must set a GITHUB_TOKEN")
 		}
 	}
-	if _, err := semver.NewVersion(opts.Version); err != nil {
+	v, err := semver.NewVersion(opts.Version)
+	if err != nil {
 		return errors.WithStack(err)
 	}
+	opts.semVersion = v
 	if len(opts.Branch) == 0 {
 		opts.Branch = "master"
 	}
