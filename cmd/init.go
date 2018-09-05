@@ -11,8 +11,10 @@ import (
 )
 
 var initOptions = struct {
-	dryRun bool
-	force  bool
+	dryRun      bool
+	force       bool
+	mainFile    string
+	versionFile string
 }{}
 
 // initCmd represents the init command
@@ -26,20 +28,24 @@ var initCmd = &cobra.Command{
 		}
 
 		g, err := makefile.New(&makefile.Options{
-			Force: initOptions.force,
+			Force:       initOptions.force,
+			VersionFile: initOptions.versionFile,
 		})
 		if err != nil {
 			return errors.WithStack(err)
 		}
 		run.With(g)
 
-		g, err = goreleaser.New(&goreleaser.Options{
-			Force: initOptions.force,
-		})
-		if err != nil {
-			return errors.WithStack(err)
+		if len(initOptions.mainFile) != 0 {
+			g, err = goreleaser.New(&goreleaser.Options{
+				Force:    initOptions.force,
+				MainFile: initOptions.mainFile,
+			})
+			if err != nil {
+				return errors.WithStack(err)
+			}
+			run.With(g)
 		}
-		run.With(g)
 		return run.Run()
 	},
 }
@@ -48,6 +54,8 @@ func init() {
 	rootCmd.AddCommand(initCmd)
 	initCmd.Flags().BoolVarP(&initOptions.dryRun, "dry-run", "d", false, "runs the generator dry")
 	initCmd.Flags().BoolVarP(&initOptions.force, "force", "f", false, "force files to overwrite existing ones")
+	initCmd.Flags().StringVarP(&initOptions.mainFile, "main-file", "m", "", "adds a .goreleaser.yml file (only for binary applications)")
+	initCmd.Flags().StringVarP(&initOptions.versionFile, "version-file", "v", "", "path to a version file to maintain")
 
 	// Here you will define your flags and configuration settings.
 

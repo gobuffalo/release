@@ -1,7 +1,8 @@
 package makefile
 
 type Options struct {
-	Force bool
+	Force       bool
+	VersionFile string
 }
 
 // Validate that options are usuable

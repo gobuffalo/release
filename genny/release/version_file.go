@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/gobuffalo/genny"
+	"github.com/gobuffalo/genny/movinglater/gotools/goimports"
 	"github.com/pkg/errors"
 )
 
@@ -13,6 +14,7 @@ var versionRx = regexp.MustCompile("[const|var] [vV]ersion = [`\"](.+)[`\"]")
 
 func writeVersionFile(opts *Options) genny.RunFn {
 	return func(r *genny.Runner) error {
+
 		f, err := r.FindFile(opts.VersionFile)
 		if err != nil {
 			return errors.WithStack(err)
@@ -37,6 +39,18 @@ func writeVersionFile(opts *Options) genny.RunFn {
 			bb.WriteString(line + "\n")
 		}
 		f = genny.NewFile(f.Name(), bb)
+
+		bb = &bytes.Buffer{}
+		gir := goimports.NewFromFiles(goimports.File{
+			Name: f.Name(),
+			In:   f,
+			Out:  bb,
+		})
+		if err := gir.Run(); err != nil {
+			return errors.WithStack(err)
+		}
+
+		f = genny.NewFile(f.Name(), strings.NewReader(strings.TrimSpace(bb.String())))
 		return r.File(f)
 	}
 }

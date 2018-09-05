@@ -11,7 +11,9 @@ import (
 func Test_New(t *testing.T) {
 	r := require.New(t)
 
-	g, err := New(&Options{})
+	g, err := New(&Options{
+		MainFile: "main.go",
+	})
 	r.NoError(err)
 
 	run := genny.DryRunner(context.Background())

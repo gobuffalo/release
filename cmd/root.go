@@ -57,6 +57,7 @@ var rootCmd = &cobra.Command{
 			return errors.WithStack(err)
 		}
 		run.With(g)
+
 		err = confirm(fmt.Sprintf("are you sure you want to release %q (%s)?\n", opts.Version, opts.Branch), releaseOptions.yesToAll, run.Run)
 		if err != nil {
 			// attempt to remove the tag as something went wrong
