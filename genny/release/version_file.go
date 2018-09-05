@@ -6,7 +6,6 @@ import (
 	"strings"
 
 	"github.com/gobuffalo/genny"
-	"github.com/gobuffalo/genny/movinglater/gotools/goimports"
 	"github.com/pkg/errors"
 )
 
@@ -38,19 +37,9 @@ func writeVersionFile(opts *Options) genny.RunFn {
 
 			bb.WriteString(line + "\n")
 		}
-		f = genny.NewFile(f.Name(), bb)
 
-		bb = &bytes.Buffer{}
-		gir := goimports.NewFromFiles(goimports.File{
-			Name: f.Name(),
-			In:   f,
-			Out:  bb,
-		})
-		if err := gir.Run(); err != nil {
-			return errors.WithStack(err)
-		}
-
-		f = genny.NewFile(f.Name(), strings.NewReader(strings.TrimSpace(bb.String())))
+		body := strings.TrimSpace(bb.String())
+		f = genny.NewFile(f.Name(), strings.NewReader(body+"\n"))
 		return r.File(f)
 	}
 }
