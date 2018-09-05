@@ -18,9 +18,7 @@ func New(opts *Options) (*genny.Generator, error) {
 		return g, errors.New("git must be installed")
 	}
 
-	if len(opts.VersionFile) != 0 {
-		g.RunFn(writeVersionFile(opts))
-	}
+	g.RunFn(WriteVersionFile(opts))
 
 	g.RunFn(runShoulders)
 

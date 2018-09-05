@@ -31,7 +31,7 @@ func init() {
 		b = "master"
 	}
 	rootCmd.Flags().StringVarP(&releaseOptions.Branch, "branch", "b", b, "branch you want to use (default is current branch)")
-	rootCmd.Flags().StringVarP(&releaseOptions.VersionFile, "version-file", "f", "", "write the version back into your version file")
+	rootCmd.Flags().StringVarP(&releaseOptions.VersionFile, "version-file", "f", "version.go", "write the version back into your version file")
 }
 
 // rootCmd represents the base command when called without any subcommands

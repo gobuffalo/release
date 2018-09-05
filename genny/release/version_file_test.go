@@ -2,6 +2,7 @@ package release
 
 import (
 	"context"
+	"fmt"
 	"testing"
 
 	"github.com/gobuffalo/genny"
@@ -13,9 +14,10 @@ func Test_writeVersionFile(t *testing.T) {
 	table := []struct {
 		vf  string
 		pkg string
+		v   string
 	}{
-		{"foo/version.go", "foo"},
-		{"version.go", "release"},
+		{"foo/version.go", "foo", "v1.0.0"},
+		{"version.go", "release", "v2.0.0"},
 	}
 
 	for _, tt := range table {
@@ -24,11 +26,12 @@ func Test_writeVersionFile(t *testing.T) {
 
 			opts := &Options{
 				VersionFile: tt.vf,
+				Version:     tt.v,
 			}
 
 			run := genny.DryRunner(context.Background())
 
-			fn := writeVersionFile(opts)
+			fn := WriteVersionFile(opts)
 			r.NoError(fn(run))
 
 			res := run.Results()
@@ -38,7 +41,9 @@ func Test_writeVersionFile(t *testing.T) {
 
 			f := res.Files[0]
 			r.Equal(opts.VersionFile, f.Name())
-			r.Contains(f.String(), "package "+tt.pkg)
+			body := f.String()
+			r.Contains(body, "package "+tt.pkg)
+			r.Contains(body, fmt.Sprintf(`const Version = "%s"`, tt.v))
 		})
 	}
 

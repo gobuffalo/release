@@ -6,6 +6,7 @@ import (
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/release/genny/goreleaser"
 	"github.com/gobuffalo/release/genny/makefile"
+	"github.com/gobuffalo/release/genny/release"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )
@@ -27,6 +28,11 @@ var initCmd = &cobra.Command{
 			run = genny.DryRunner(context.Background())
 		}
 
+		if len(initOptions.versionFile) != 0 {
+			run.WithRun(release.WriteVersionFile(&release.Options{
+				VersionFile: initOptions.versionFile,
+			}))
+		}
 		g, err := makefile.New(&makefile.Options{
 			Force:       initOptions.force,
 			VersionFile: initOptions.versionFile,

@@ -15,10 +15,14 @@ import (
 	"github.com/pkg/errors"
 )
 
-var versionRx = regexp.MustCompile("[const|var] [vV]ersion = [`\"](.+)[`\"]")
+var versionRx = regexp.MustCompile("[const|var] [vV]ersion = ([`\"].*[`\"])")
 
-func writeVersionFile(opts *Options) genny.RunFn {
+func WriteVersionFile(opts *Options) genny.RunFn {
 	return func(r *genny.Runner) error {
+
+		if len(opts.Version) == 0 {
+			return errors.New("version can not be blank")
+		}
 
 		f, err := r.FindFile(opts.VersionFile)
 		if err != nil {
@@ -40,7 +44,7 @@ func writeVersionFile(opts *Options) genny.RunFn {
 			if len(matches) > 1 {
 				v := matches[1]
 
-				bb.WriteString(strings.Replace(line, v, opts.Version, 1) + "\n")
+				bb.WriteString(strings.Replace(line, v, `"`+opts.Version+`"`, 1) + "\n")
 				continue
 			}
 
