@@ -12,7 +12,9 @@ import (
 var initOptions = struct {
 	*initgen.Options
 	dryRun bool
-}{}
+}{
+	Options: &initgen.Options{},
+}
 
 // initCmd represents the init command
 var initCmd = &cobra.Command{
