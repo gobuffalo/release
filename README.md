@@ -1,8 +1,8 @@
 <p align="center"><img src="https://github.com/gobuffalo/buffalo/blob/master/logo.svg" width="360"></p>
 
 <p align="center">
-<a href="https://godoc.org/github.com/gobuffalo/buffalo-release"><img src="https://godoc.org/github.com/gobuffalo/buffalo-release?status.svg" alt="GoDoc" /></a>
-<a href="https://goreportcard.com/report/github.com/gobuffalo/buffalo-release"><img src="https://goreportcard.com/badge/github.com/gobuffalo/buffalo-release" alt="Go Report Card" /></a>
+<a href="https://godoc.org/github.com/gobuffalo/release"><img src="https://godoc.org/github.com/gobuffalo/release?status.svg" alt="GoDoc" /></a>
+<a href="https://goreportcard.com/report/github.com/gobuffalo/release"><img src="https://goreportcard.com/badge/github.com/gobuffalo/release" alt="Go Report Card" /></a>
 </p>
 
 # github.com/gobuffalo/release
