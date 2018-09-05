@@ -3,12 +3,11 @@ module github.com/gobuffalo/release
 require (
 	github.com/Masterminds/semver v1.4.2
 	github.com/gobuffalo/envy v1.6.4
-	github.com/gobuffalo/genny v0.0.0-20180904214332-b7dcbfc7ea0a
+	github.com/gobuffalo/genny v0.0.0-20180905180744-ca4140706556
 	github.com/gobuffalo/packr v1.13.3
 	github.com/gobuffalo/plush v3.7.16+incompatible
 	github.com/gobuffalo/shoulders v0.0.0-20180904151418-9cac5899ceee
 	github.com/pkg/errors v0.8.0
 	github.com/spf13/cobra v0.0.3
 	github.com/stretchr/testify v1.2.2
-	golang.org/x/sys v0.0.0-20180905080454-ebe1bf3edb33 // indirect
 )

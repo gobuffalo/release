@@ -55,7 +55,7 @@ func init() {
 	initCmd.Flags().BoolVarP(&initOptions.dryRun, "dry-run", "d", false, "runs the generator dry")
 	initCmd.Flags().BoolVarP(&initOptions.force, "force", "f", false, "force files to overwrite existing ones")
 	initCmd.Flags().StringVarP(&initOptions.mainFile, "main-file", "m", "", "adds a .goreleaser.yml file (only for binary applications)")
-	initCmd.Flags().StringVarP(&initOptions.versionFile, "version-file", "v", "", "path to a version file to maintain")
+	initCmd.Flags().StringVarP(&initOptions.versionFile, "version-file", "v", "version.go", "path to a version file to maintain")
 
 	// Here you will define your flags and configuration settings.
 
