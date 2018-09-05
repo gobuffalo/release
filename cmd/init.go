@@ -31,6 +31,7 @@ var initCmd = &cobra.Command{
 		if len(initOptions.versionFile) != 0 {
 			run.WithRun(release.WriteVersionFile(&release.Options{
 				VersionFile: initOptions.versionFile,
+				Version:     "v0.0.1",
 			}))
 		}
 		g, err := makefile.New(&makefile.Options{

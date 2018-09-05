@@ -18,7 +18,7 @@ func Test_Options_Validate(t *testing.T) {
 			{&Options{}, false},
 			{&Options{GitHubToken: "foo", Version: "v1.0.0"}, true},
 			{&Options{GitHubToken: "", Version: "v1.0.0"}, false},
-			{&Options{GitHubToken: "foo", Version: ""}, false},
+			{&Options{GitHubToken: "foo", Version: ""}, true},
 		}
 
 		for _, tt := range table {

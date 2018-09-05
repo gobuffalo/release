@@ -23,6 +23,9 @@ func (opts *Options) Validate() error {
 			return errors.New("you must set a GITHUB_TOKEN")
 		}
 	}
+	if len(opts.Version) == 0 {
+		opts.Version = "v0.0.1"
+	}
 	v, err := semver.NewVersion(opts.Version)
 	if err != nil {
 		return errors.WithStack(err)
