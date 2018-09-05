@@ -23,8 +23,6 @@ changelog:
     - '^docs:'
     - '^test:'
 brew:
-   name: "{{.ProjectName}}"
-   install: |
-     bin.install "{{.Binary}}"
-   # test: |
-   #   system "#{bin}/{{.Binary}} version"
+  github:
+    owner: "gobuffalo"
+    name: "homebrew-tap"
