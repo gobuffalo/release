@@ -1,4 +1,4 @@
-package init
+package initgen
 
 import (
 	"github.com/gobuffalo/genny"

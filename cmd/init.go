@@ -4,20 +4,14 @@ import (
 	"context"
 
 	"github.com/gobuffalo/genny"
-	"github.com/gobuffalo/release/genny/goreleaser"
-	"github.com/gobuffalo/release/genny/init"
-	"github.com/gobuffalo/release/genny/makefile"
-	"github.com/gobuffalo/release/genny/release"
+	"github.com/gobuffalo/release/genny/initgen"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )
 
 var initOptions = struct {
-	*init.Options
-	dryRun      bool
-	force       bool
-	mainFile    string
-	versionFile string
+	*initgen.Options
+	dryRun bool
 }{}
 
 // initCmd represents the init command
@@ -30,31 +24,14 @@ var initCmd = &cobra.Command{
 			run = genny.DryRunner(context.Background())
 		}
 
-		if len(initOptions.versionFile) != 0 {
-			run.WithRun(release.WriteVersionFile(&release.Options{
-				VersionFile: initOptions.versionFile,
-				Version:     "v0.0.1",
-			}))
-		}
-		g, err := makefile.New(&makefile.Options{
-			Force:       initOptions.force,
-			VersionFile: initOptions.versionFile,
-		})
+		opts := initOptions.Options
+
+		gg, err := initgen.New(opts)
 		if err != nil {
 			return errors.WithStack(err)
 		}
-		run.With(g)
+		run.WithGroup(gg)
 
-		if len(initOptions.mainFile) != 0 {
-			g, err = goreleaser.New(&goreleaser.Options{
-				Force:    initOptions.force,
-				MainFile: initOptions.mainFile,
-			})
-			if err != nil {
-				return errors.WithStack(err)
-			}
-			run.With(g)
-		}
 		return run.Run()
 	},
 }
@@ -62,9 +39,9 @@ var initCmd = &cobra.Command{
 func init() {
 	rootCmd.AddCommand(initCmd)
 	initCmd.Flags().BoolVarP(&initOptions.dryRun, "dry-run", "d", false, "runs the generator dry")
-	initCmd.Flags().BoolVarP(&initOptions.force, "force", "f", false, "force files to overwrite existing ones")
-	initCmd.Flags().StringVarP(&initOptions.mainFile, "main-file", "m", "", "adds a .goreleaser.yml file (only for binary applications)")
-	initCmd.Flags().StringVarP(&initOptions.versionFile, "version-file", "v", "version.go", "path to a version file to maintain")
+	initCmd.Flags().BoolVarP(&initOptions.Force, "force", "f", false, "force files to overwrite existing ones")
+	initCmd.Flags().StringVarP(&initOptions.MainFile, "main-file", "m", "", "adds a .goreleaser.yml file (only for binary applications)")
+	initCmd.Flags().StringVarP(&initOptions.VersionFile, "version-file", "v", "version.go", "path to a version file to maintain")
 
 	// Here you will define your flags and configuration settings.
 

@@ -1,4 +1,4 @@
-package init
+package initgen
 
 type Options struct {
 	VersionFile string
