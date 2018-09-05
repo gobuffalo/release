@@ -28,6 +28,7 @@ update:
 	$(GO_BIN) mod tidy
 	packr
 	make test
+	make install
 
 release-test:
 	$(GO_BIN) test -tags ${TAGS} -race ./...

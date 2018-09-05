@@ -5,6 +5,7 @@ import (
 
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/release/genny/goreleaser"
+	"github.com/gobuffalo/release/genny/init"
 	"github.com/gobuffalo/release/genny/makefile"
 	"github.com/gobuffalo/release/genny/release"
 	"github.com/pkg/errors"
@@ -12,6 +13,7 @@ import (
 )
 
 var initOptions = struct {
+	*init.Options
 	dryRun      bool
 	force       bool
 	mainFile    string
