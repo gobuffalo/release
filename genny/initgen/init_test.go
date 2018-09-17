@@ -2,6 +2,7 @@ package initgen
 
 import (
 	"context"
+	"strings"
 	"testing"
 
 	"github.com/gobuffalo/genny"
@@ -24,16 +25,26 @@ func Test_New(t *testing.T) {
 
 	res := run.Results()
 
-	r.Len(res.Commands, 0)
-	r.Len(res.Files, 3)
+	r.Len(res.Commands, 2)
+
+	c := res.Commands[0]
+	r.Equal("go get github.com/alecthomas/gometalinter", strings.Join(c.Args, " "))
+
+	c = res.Commands[1]
+	r.Equal("gometalinter --install", strings.Join(c.Args, " "))
+
+	r.Len(res.Files, 4)
 
 	f := res.Files[0]
-	r.Equal(".goreleaser.yml", f.Name())
+	r.Equal(".gometalinter.json", f.Name())
 
 	f = res.Files[1]
-	r.Equal("Makefile", f.Name())
+	r.Equal(".goreleaser.yml", f.Name())
 
 	f = res.Files[2]
+	r.Equal("Makefile", f.Name())
+
+	f = res.Files[3]
 	r.Equal("foo/bar/version.go", f.Name())
 	r.Contains(f.String(), `const Version = "v0.0.1"`)
 }
