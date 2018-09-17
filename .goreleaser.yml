@@ -26,3 +26,7 @@ brew:
   github:
     owner: "gobuffalo"
     name: "homebrew-tap"
+  homepage: https://github.com/gobuffalo/release
+  description: A tool for releasing new tools from the Buffalo eco-system.
+  test: |
+    system "#{bin}/release", "-h"
