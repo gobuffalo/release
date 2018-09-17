@@ -71,6 +71,8 @@ Thank you to the following **GIANTS**:
 
 * [github.com/markbates/inflect](https://godoc.org/github.com/markbates/inflect)
 
+* [github.com/markbates/oncer](https://godoc.org/github.com/markbates/oncer)
+
 * [github.com/microcosm-cc/bluemonday](https://godoc.org/github.com/microcosm-cc/bluemonday)
 
 * [github.com/onsi/ginkgo](https://godoc.org/github.com/onsi/ginkgo)
