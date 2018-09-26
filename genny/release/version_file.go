@@ -19,6 +19,9 @@ var versionRx = regexp.MustCompile("[const|var] [vV]ersion = ([`\"].*[`\"])")
 
 func WriteVersionFile(opts *Options) genny.RunFn {
 	return func(r *genny.Runner) error {
+		if len(opts.VersionFile) == 0 {
+			opts.VersionFile = "version.go"
+		}
 
 		if len(opts.Version) == 0 {
 			return errors.New("version can not be blank")
