@@ -26,6 +26,7 @@ func New(opts *Options) (*genny.Group, error) {
 	g, err := makefile.New(&makefile.Options{
 		Force:       opts.Force,
 		VersionFile: opts.VersionFile,
+		MainFile:    opts.MainFile,
 	})
 	if err != nil {
 		return gg, errors.WithStack(err)

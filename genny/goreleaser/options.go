@@ -2,6 +2,7 @@ package goreleaser
 
 import (
 	"os/user"
+	"path/filepath"
 
 	"github.com/pkg/errors"
 )
@@ -28,6 +29,11 @@ func (opts *Options) Validate() error {
 			return errors.WithStack(err)
 		}
 		opts.BrewOwner = user.Username
+	}
+	if len(opts.MainFile) > 0 {
+		if filepath.Ext(opts.MainFile) != ".go" {
+			return errors.Errorf("%s is not a .go file", opts.MainFile)
+		}
 	}
 	return nil
 }

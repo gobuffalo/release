@@ -1,5 +1,11 @@
 package initgen
 
+import (
+	"path/filepath"
+
+	"github.com/pkg/errors"
+)
+
 type Options struct {
 	VersionFile string
 	Version     string
@@ -14,6 +20,11 @@ func (opts *Options) Validate() error {
 	}
 	if len(opts.VersionFile) == 0 {
 		opts.Version = "version.go"
+	}
+	if len(opts.MainFile) > 0 {
+		if filepath.Ext(opts.MainFile) != ".go" {
+			return errors.Errorf("%s is not a .go file", opts.MainFile)
+		}
 	}
 	return nil
 }
