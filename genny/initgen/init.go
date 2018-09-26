@@ -2,6 +2,7 @@ package initgen
 
 import (
 	"github.com/gobuffalo/genny"
+	"github.com/gobuffalo/packr"
 	"github.com/gobuffalo/release/genny/git"
 	"github.com/gobuffalo/release/genny/gomods"
 	"github.com/gobuffalo/release/genny/goreleaser"
@@ -16,6 +17,11 @@ func New(opts *Options) (*genny.Group, error) {
 	if err := opts.Validate(); err != nil {
 		return gg, errors.WithStack(err)
 	}
+
+	g := genny.New()
+	g.Box(packr.NewBox("../initgen/templates"))
+	g.Transformer(genny.Dot())
+	gg.Add(g)
 
 	// set up git
 	g, err := git.New(&git.Options{})

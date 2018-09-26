@@ -37,7 +37,7 @@ func Test_New(t *testing.T) {
 		r.Equal(x, strings.Join(res.Commands[i].Args, " "))
 	}
 
-	r.Len(res.Files, 5)
+	r.Len(res.Files, 6)
 
 	f := res.Files[0]
 	r.Equal(".gitignore", f.Name())
@@ -49,9 +49,12 @@ func Test_New(t *testing.T) {
 	r.Equal(".goreleaser.yml", f.Name())
 
 	f = res.Files[3]
-	r.Equal("Makefile", f.Name())
+	r.Equal(".travis.yml", f.Name())
 
 	f = res.Files[4]
+	r.Equal("Makefile", f.Name())
+
+	f = res.Files[5]
 	r.Equal("foo/bar/version.go", f.Name())
 	r.Contains(f.String(), `const Version = "v0.0.1"`)
 }
