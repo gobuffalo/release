@@ -26,6 +26,9 @@ func (opts *Options) Validate() error {
 			return errors.Errorf("%s is not a .go file", opts.MainFile)
 		}
 		opts.BuildPath = filepath.Dir(opts.MainFile)
+		if len(opts.BuildPath) > 0 {
+			opts.BuildPath = "./" + opts.BuildPath
+		}
 	}
 	return nil
 }
