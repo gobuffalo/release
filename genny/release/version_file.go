@@ -91,6 +91,14 @@ func defaultVersionFile(name string) (genny.File, error) {
 
 	f := genny.NewFile(name+".plush", strings.NewReader(versionTmpl))
 
+	if len(pkg) == 0 {
+		pwd, err := os.Getwd()
+		if err != nil {
+			return f, errors.WithStack(err)
+		}
+		pkg = filepath.Base(pwd)
+	}
+
 	ctx := plush.NewContext()
 	ctx.Set("pkg", pkg)
 	t := plushgen.Transformer(ctx)
