@@ -29,7 +29,7 @@ func Test_New(t *testing.T) {
 	if !gomods.On() {
 		cmds = []string{"git init", "go get github.com/alecthomas/gometalinter", "gometalinter --install"}
 	} else {
-		cmds = []string{"git init", "go mod init", "go mod tidy", "go get github.com/alecthomas/gometalinter", "gometalinter --install"}
+		cmds = []string{"git init", "go mod init", "go mod tidy", "go get github.com/alecthomas/gometalinter", "gometalinter --install", "go mod init", "go mod tidy"}
 	}
 
 	r.Len(res.Commands, len(cmds))
