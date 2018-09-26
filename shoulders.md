@@ -13,6 +13,8 @@ Thank you to the following **GIANTS**:
 
 * [github.com/gobuffalo/genny](https://godoc.org/github.com/gobuffalo/genny)
 
+* [github.com/gobuffalo/genny/gentest](https://godoc.org/github.com/gobuffalo/genny/gentest)
+
 * [github.com/gobuffalo/genny/movinglater/gotools](https://godoc.org/github.com/gobuffalo/genny/movinglater/gotools)
 
 * [github.com/gobuffalo/genny/movinglater/gotools/goimports](https://godoc.org/github.com/gobuffalo/genny/movinglater/gotools/goimports)
