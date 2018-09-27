@@ -29,12 +29,12 @@ func Test_New(t *testing.T) {
 	if !gomods.On() {
 		cmds = []string{"git init", "go get github.com/alecthomas/gometalinter", "gometalinter --install"}
 	} else {
-		cmds = []string{"git init", "go mod init", "go mod tidy", "go get github.com/alecthomas/gometalinter", "gometalinter --install", "go mod init", "go mod tidy"}
+		cmds = []string{"git init", "go mod init", "go get github.com/alecthomas/gometalinter", "gometalinter --install", "go mod tidy"}
 	}
 
 	r.Len(res.Commands, len(cmds))
 	for i, x := range cmds {
-		r.Equal(x, strings.Join(res.Commands[i].Args, " "))
+		r.Equal(x, strings.TrimSpace(strings.Join(res.Commands[i].Args, " ")))
 	}
 
 	r.Len(res.Files, 6)

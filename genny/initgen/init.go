@@ -2,9 +2,9 @@ package initgen
 
 import (
 	"github.com/gobuffalo/genny"
+	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
 	"github.com/gobuffalo/packr"
 	"github.com/gobuffalo/release/genny/git"
-	"github.com/gobuffalo/release/genny/gomods"
 	"github.com/gobuffalo/release/genny/goreleaser"
 	"github.com/gobuffalo/release/genny/makefile"
 	"github.com/gobuffalo/release/genny/release"
@@ -31,7 +31,7 @@ func New(opts *Options) (*genny.Group, error) {
 	gg.Add(g)
 
 	// set up go mods if enabled
-	g, err = gomods.New(&gomods.Options{})
+	g, err = gomods.Init("", "")
 	if err != nil {
 		return gg, errors.WithStack(err)
 	}
@@ -67,7 +67,7 @@ func New(opts *Options) (*genny.Group, error) {
 	}
 
 	// run go mod tidy again at the end
-	g, err = gomods.New(&gomods.Options{})
+	g, err = gomods.Tidy("", false)
 	if err != nil {
 		return gg, errors.WithStack(err)
 	}
