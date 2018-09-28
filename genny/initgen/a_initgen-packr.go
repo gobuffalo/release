@@ -7,5 +7,5 @@ import "github.com/gobuffalo/packr"
 // You can use the "packr clean" command to clean up this,
 // and any other packr generated files.
 func init() {
-	packr.PackJSONBytes("../initgen/templates", "-dot-travis.yml", "\"bGFuZ3VhZ2U6IGdvCgpzdWRvOiBmYWxzZQoKZ286CiAgLSAxLjkueAogIC0gMS4xMC54CiAgLSAxLjExLngKICAtIHRpcAoKaW5zdGFsbDogbWFrZSBkZXBzCgpzY3JpcHQ6IG1ha2UgY2ktdGVzdAoKbWF0cml4OgogIGFsbG93X2ZhaWx1cmVzOgogICAgLSBnbzogJ3RpcCcKCg==\"")
+	packr.PackJSONBytes("../initgen/templates", "-dot-travis.yml", "\"bGFuZ3VhZ2U6IGdvCgpzdWRvOiBmYWxzZQoKbWF0cml4OgogIGluY2x1ZGU6CiAgLSBnbzogIjEuOS54IgogIC0gZ286ICIxLjEwLngiCiAgLSBnbzogIjEuMTEueCIKICAgIGVudjoKICAgICAgLSBHTzExMU1PRFVMRT1vZmYKICAtIGdvOiAiMS4xMS54IgogICAgZW52OgogICAgICAtIEdPMTExTU9EVUxFPW9uCiAgLSBnbzogInRpcCIKICAgIGVudjoKICAgICAgLSBHTzExMU1PRFVMRT1vZmYKICAtIGdvOiAidGlwIgogICAgZW52OgogICAgICAtIEdPMTExTU9EVUxFPW9uCiAgYWxsb3dfZmFpbHVyZXM6CiAgICAtIGdvOiAidGlwIgoKaW5zdGFsbDogbWFrZSBkZXBzCgpzY3JpcHQ6IG1ha2UgY2ktdGVzdAo=\"")
 }
