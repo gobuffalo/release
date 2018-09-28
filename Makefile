@@ -42,5 +42,5 @@ endif
 release-test:
 	$(GO_BIN) test -tags ${TAGS} -race ./...
 
-release:
+me:
 	release -y -f ./release/version.go
