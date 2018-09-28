@@ -31,7 +31,7 @@ func New(opts *Options) (*genny.Group, error) {
 	gg.Add(g)
 
 	// set up go mods if enabled
-	g, err = gomods.Init("", "")
+	g, err = gomods.Init("", opts.Root)
 	if err != nil {
 		return gg, errors.WithStack(err)
 	}
@@ -67,7 +67,7 @@ func New(opts *Options) (*genny.Group, error) {
 	}
 
 	// run go mod tidy again at the end
-	g, err = gomods.Tidy("", false)
+	g, err = gomods.Tidy(opts.Root, false)
 	if err != nil {
 		return gg, errors.WithStack(err)
 	}

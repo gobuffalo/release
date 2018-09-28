@@ -11,6 +11,7 @@ type Options struct {
 	Version     string
 	MainFile    string
 	Force       bool
+	Root        string
 }
 
 // Validate that options are usuable
