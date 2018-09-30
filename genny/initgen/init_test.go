@@ -46,7 +46,7 @@ func Test_New(t *testing.T) {
 	r.Equal(".gometalinter.json", f.Name())
 
 	f = res.Files[2]
-	r.Equal(".goreleaser.yml", f.Name())
+	r.Equal(".goreleaser.yml.plush", f.Name())
 
 	f = res.Files[3]
 	r.Equal(".travis.yml", f.Name())

@@ -27,5 +27,5 @@ func Test_New(t *testing.T) {
 	r.Len(res.Files, 1)
 
 	f := res.Files[0]
-	r.Equal(".goreleaser.yml", f.Name())
+	r.Equal(".goreleaser.yml.plush", f.Name())
 }

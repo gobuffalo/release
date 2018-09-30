@@ -32,7 +32,7 @@ func New(opts *Options) (*genny.Generator, error) {
 
 	g.RunFn(tagRelease(opts))
 
-	g.RunFn(runGoreleaser)
+	g.RunFn(runGoreleaser(opts))
 
 	if len(opts.semVersion.Prerelease()) != 0 {
 		g.RunFn(func(r *genny.Runner) error {

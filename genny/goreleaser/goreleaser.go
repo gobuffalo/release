@@ -1,10 +1,11 @@
 package goreleaser
 
 import (
+	"html/template"
+
 	"github.com/gobuffalo/genny"
-	"github.com/gobuffalo/genny/movinglater/plushgen"
+	"github.com/gobuffalo/genny/movinglater/gotools"
 	"github.com/gobuffalo/packr"
-	"github.com/gobuffalo/plush"
 	"github.com/pkg/errors"
 )
 
@@ -19,9 +20,12 @@ func New(opts *Options) (*genny.Generator, error) {
 	if err := genny.ForceBox(g, box, opts.Force); err != nil {
 		return g, errors.WithStack(err)
 	}
-	ctx := plush.NewContext()
-	ctx.Set("opts", opts)
-	g.Transformer(plushgen.Transformer(ctx))
+
+	data := map[string]interface{}{
+		"opts": opts,
+	}
+	g.Transformer(gotools.TemplateTransformer(data, template.FuncMap{}))
+
 	g.Transformer(genny.Dot())
 	return g, nil
 }
