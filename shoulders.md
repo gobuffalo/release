@@ -13,7 +13,7 @@ Thank you to the following **GIANTS**:
 
 * [github.com/gobuffalo/genny](https://godoc.org/github.com/gobuffalo/genny)
 
-* [github.com/gobuffalo/genny/gentest](https://godoc.org/github.com/gobuffalo/genny/gentest)
+* [github.com/gobuffalo/genny/movinglater/git](https://godoc.org/github.com/gobuffalo/genny/movinglater/git)
 
 * [github.com/gobuffalo/genny/movinglater/gotools](https://godoc.org/github.com/gobuffalo/genny/movinglater/gotools)
 
@@ -39,6 +39,22 @@ Thank you to the following **GIANTS**:
 
 * [github.com/gobuffalo/plush/token](https://godoc.org/github.com/gobuffalo/plush/token)
 
+* [github.com/gobuffalo/release](https://godoc.org/github.com/gobuffalo/release)
+
+* [github.com/gobuffalo/release/cmd](https://godoc.org/github.com/gobuffalo/release/cmd)
+
+* [github.com/gobuffalo/release/genny/git](https://godoc.org/github.com/gobuffalo/release/genny/git)
+
+* [github.com/gobuffalo/release/genny/goreleaser](https://godoc.org/github.com/gobuffalo/release/genny/goreleaser)
+
+* [github.com/gobuffalo/release/genny/initgen](https://godoc.org/github.com/gobuffalo/release/genny/initgen)
+
+* [github.com/gobuffalo/release/genny/makefile](https://godoc.org/github.com/gobuffalo/release/genny/makefile)
+
+* [github.com/gobuffalo/release/genny/release](https://godoc.org/github.com/gobuffalo/release/genny/release)
+
+* [github.com/gobuffalo/release/release](https://godoc.org/github.com/gobuffalo/release/release)
+
 * [github.com/gobuffalo/shoulders/shoulders](https://godoc.org/github.com/gobuffalo/shoulders/shoulders)
 
 * [github.com/gobuffalo/tags](https://godoc.org/github.com/gobuffalo/tags)
@@ -55,8 +71,6 @@ Thank you to the following **GIANTS**:
 
 * [github.com/joho/godotenv](https://godoc.org/github.com/joho/godotenv)
 
-* [github.com/kr/pretty](https://godoc.org/github.com/kr/pretty)
-
 * [github.com/markbates/deplist](https://godoc.org/github.com/markbates/deplist)
 
 * [github.com/markbates/inflect](https://godoc.org/github.com/markbates/inflect)
@@ -64,10 +78,6 @@ Thank you to the following **GIANTS**:
 * [github.com/markbates/oncer](https://godoc.org/github.com/markbates/oncer)
 
 * [github.com/microcosm-cc/bluemonday](https://godoc.org/github.com/microcosm-cc/bluemonday)
-
-* [github.com/onsi/ginkgo](https://godoc.org/github.com/onsi/ginkgo)
-
-* [github.com/onsi/gomega](https://godoc.org/github.com/onsi/gomega)
 
 * [github.com/pkg/errors](https://godoc.org/github.com/pkg/errors)
 
@@ -93,23 +103,11 @@ Thank you to the following **GIANTS**:
 
 * [github.com/spf13/pflag](https://godoc.org/github.com/spf13/pflag)
 
-* [github.com/stretchr/testify/assert](https://godoc.org/github.com/stretchr/testify/assert)
-
-* [github.com/stretchr/testify/require](https://godoc.org/github.com/stretchr/testify/require)
-
-* [github.com/stretchr/testify/vendor/github.com/davecgh/go-spew/spew](https://godoc.org/github.com/stretchr/testify/vendor/github.com/davecgh/go-spew/spew)
-
-* [github.com/stretchr/testify/vendor/github.com/pmezard/go-difflib/difflib](https://godoc.org/github.com/stretchr/testify/vendor/github.com/pmezard/go-difflib/difflib)
-
 * [golang.org/x/crypto/ssh/terminal](https://godoc.org/golang.org/x/crypto/ssh/terminal)
-
-* [golang.org/x/net/context](https://godoc.org/golang.org/x/net/context)
 
 * [golang.org/x/net/html](https://godoc.org/golang.org/x/net/html)
 
 * [golang.org/x/net/html/atom](https://godoc.org/golang.org/x/net/html/atom)
-
-* [golang.org/x/sync/errgroup](https://godoc.org/golang.org/x/sync/errgroup)
 
 * [golang.org/x/sys/unix](https://godoc.org/golang.org/x/sys/unix)
 
@@ -118,5 +116,3 @@ Thank you to the following **GIANTS**:
 * [golang.org/x/tools/imports](https://godoc.org/golang.org/x/tools/imports)
 
 * [golang.org/x/tools/internal/fastwalk](https://godoc.org/golang.org/x/tools/internal/fastwalk)
-
-* [gopkg.in/check.v1](https://godoc.org/gopkg.in/check.v1)
