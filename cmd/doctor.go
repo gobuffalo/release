@@ -38,12 +38,13 @@ var doctorCmd = &cobra.Command{
 			gv := strings.TrimSpace(string(b))
 			fmt.Printf("Git is installed: %s (%s)\n", p, gv)
 		} else {
-			found = false
+			found = true
 			fmt.Printf("Git is NOT installed: %s\n", err)
 		}
 
-		_, err = os.Stat(".goreleaser.yml")
-		if err == nil {
+		_, e1 := os.Stat(".goreleaser.yml")
+		_, e2 := os.Stat(".goreleaser.yml.plush")
+		if e1 == nil || e2 == nil {
 			fmt.Println("\nchecking your Goreleaser installation...")
 			p, err := exec.LookPath("goreleaser")
 			if err == nil {
@@ -55,7 +56,7 @@ var doctorCmd = &cobra.Command{
 				gv := strings.TrimSpace(string(b))
 				fmt.Printf("Goreleaser is installed: %s (%s)\n", p, gv)
 			} else {
-				found = false
+				found = true
 				fmt.Printf("Goreleaser is NOT installed: %s\n", err)
 			}
 		}
