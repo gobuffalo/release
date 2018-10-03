@@ -48,16 +48,14 @@ func runGoreleaser(opts *Options) genny.RunFn {
 			return errors.WithStack(err)
 		}
 
-		if f.String() != gy.String() {
-			if err := git.Run("add", ".goreleaser.yml")(r); err != nil {
-				if errors.Cause(err) != git.ErrWorkingTreeClean {
-					return errors.WithStack(err)
-				}
+		if err := git.Run("add", ".goreleaser.yml")(r); err != nil {
+			if errors.Cause(err) != git.ErrWorkingTreeClean {
+				return errors.WithStack(err)
 			}
-			if err := git.Run("commit", "-m", "generated goreleaser", ".goreleaser.yml")(r); err != nil {
-				if errors.Cause(err) != git.ErrWorkingTreeClean {
-					return errors.WithStack(err)
-				}
+		}
+		if err := git.Run("commit", "-m", "generated goreleaser", ".goreleaser.yml")(r); err != nil {
+			if errors.Cause(err) != git.ErrWorkingTreeClean {
+				return errors.WithStack(err)
 			}
 		}
 
