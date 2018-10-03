@@ -28,6 +28,9 @@ lint:
 	gometalinter --vendor ./... --deadline=1m --skip=internal
 
 update:
+ifeq ($(GO111MODULE),on)
+	rm go.*
+endif
 	$(GO_BIN) get -u -tags ${TAGS}
 ifeq ($(GO111MODULE),on)
 	$(GO_BIN) mod tidy
