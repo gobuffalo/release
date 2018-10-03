@@ -13,40 +13,56 @@ import (
 	"github.com/pkg/errors"
 )
 
+var errFileNotFound = errors.New("file not found")
+
+func releaserFile(r *genny.Runner) (genny.File, error) {
+	if f, err := r.FindFile(".goreleaser.yml.plush"); err == nil {
+		return f, nil
+	}
+	if f, err := r.FindFile(".goreleaser.yml"); err == nil {
+		return f, nil
+	}
+	return nil, errFileNotFound
+}
+
 func runGoreleaser(opts *Options) genny.RunFn {
 	return func(r *genny.Runner) error {
-		gyp, gypOK := r.FindFile(".goreleaser.yml.plush")
-		gy, gyOK := r.FindFile(".goreleaser.yml")
-		if gypOK != nil && gyOK != nil {
-			r.Logger.Info("No .goreleaser.yml(.plush) detected so skipping goreleaser step")
-			return nil
+		gy, err := releaserFile(r)
+		if err != nil {
+			if errors.Cause(err) == errFileNotFound {
+				r.Logger.Info("No .goreleaser.yml(.plush) detected so skipping goreleaser step")
+				return nil
+			}
+			return errors.WithStack(err)
 		}
 
-		if gypOK == nil {
-			ctx := plush.NewContext()
-			ctx.Set("brew", !(strings.Contains(opts.Version, "-beta") || strings.Contains(opts.Version, "-rc")))
-			t := plushgen.Transformer(ctx)
-			f, err := t.Transform(gyp)
-			if err != nil {
-				return errors.WithStack(err)
-			}
+		ctx := plush.NewContext()
+		ctx.Set("brew", !(strings.Contains(opts.Version, "-beta") || strings.Contains(opts.Version, "-rc")))
+		t := plushgen.Transformer(ctx)
+		f, err := t.Transform(gy)
+		if err != nil {
+			return errors.WithStack(err)
+		}
 
-			if err := r.File(genny.NewFile(gy.Name(), strings.NewReader(warningLabel+f.String()))); err != nil {
-				return errors.WithStack(err)
-			}
+		if err := r.File(genny.NewFile(f.Name(), strings.NewReader(warningLabel+f.String()))); err != nil {
+			return errors.WithStack(err)
+		}
 
-			if gyOK != nil || (f.String() != gy.String()) {
-				if err := git.Run("add", ".goreleaser.yml")(r); err != nil {
-					if errors.Cause(err) != git.ErrWorkingTreeClean {
-						return errors.WithStack(err)
-					}
-				}
-				if err := git.Run("commit", "-m", "generated goreleaser", ".goreleaser.yml")(r); err != nil {
-					if errors.Cause(err) != git.ErrWorkingTreeClean {
-						return errors.WithStack(err)
-					}
+		if f.String() != gy.String() {
+			if err := git.Run("add", ".goreleaser.yml")(r); err != nil {
+				if errors.Cause(err) != git.ErrWorkingTreeClean {
+					return errors.WithStack(err)
 				}
 			}
+			if err := git.Run("commit", "-m", "generated goreleaser", ".goreleaser.yml")(r); err != nil {
+				if errors.Cause(err) != git.ErrWorkingTreeClean {
+					return errors.WithStack(err)
+				}
+			}
+		}
+
+		if err := tagRelease(opts)(r); err != nil {
+			return errors.WithStack(err)
 		}
 
 		c := exec.Command("goreleaser")

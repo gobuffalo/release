@@ -30,9 +30,7 @@ func New(opts *Options) (*genny.Generator, error) {
 
 	g.RunFn(commit(opts))
 
-	g.RunFn(tagRelease(opts))
-
-	g.RunFn(runGoreleaser(opts))
+	g.RunFn(pushRelease(opts))
 
 	if len(opts.semVersion.Prerelease()) != 0 {
 		g.RunFn(func(r *genny.Runner) error {
@@ -41,6 +39,16 @@ func New(opts *Options) (*genny.Generator, error) {
 		})
 	}
 	return g, nil
+}
+
+func pushRelease(opts *Options) genny.RunFn {
+	return func(r *genny.Runner) error {
+		_, err := releaserFile(r)
+		if errors.Cause(err) == errFileNotFound {
+			return tagRelease(opts)(r)
+		}
+		return runGoreleaser(opts)(r)
+	}
 }
 
 const preWarning = `!!!!!!!!!!!!!!! WARNING !!!!!!!!!!!!!!!
