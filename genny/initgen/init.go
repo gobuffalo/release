@@ -30,6 +30,17 @@ func New(opts *Options) (*genny.Group, error) {
 	}
 	gg.Add(g)
 
+	if opts.Force {
+		g = genny.New()
+		g.RunFn(func(r *genny.Runner) error {
+			for _, x := range []string{"go.mod", "go.sum"} {
+				r.Delete(x)
+			}
+			return nil
+		})
+		gg.Add(g)
+	}
+
 	// set up go mods if enabled
 	g, err = gomods.Init("", opts.Root)
 	if err != nil {
