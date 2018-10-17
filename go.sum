@@ -10,8 +10,8 @@ github.com/gobuffalo/envy v1.6.4/go.mod h1:Abh+Jfw475/NWtYMEt+hnJWRiC8INKWibIMyN
 github.com/gobuffalo/envy v1.6.5 h1:X3is06x7v0nW2xiy2yFbbIjwHz57CD6z6MkvqULTCm8=
 github.com/gobuffalo/envy v1.6.5/go.mod h1:N+GkhhZ/93bGZc6ZKhJLP6+m+tCNPKwgSpH9kaifseQ=
 github.com/gobuffalo/flect v0.0.0-20181002182613-4571df4b1daf/go.mod h1:rCiQgmAE4axgBNl3jZWzS5rETRYTGOsrixTRaCPzNdA=
-github.com/gobuffalo/genny v0.0.0-20181017142616-0ee1b753300e h1:WjBJKSGXndtuzGTzcob3ipiEZPkk+EeJI1r5ko0Ykn4=
-github.com/gobuffalo/genny v0.0.0-20181017142616-0ee1b753300e/go.mod h1:+oG5Ljrw04czAHbPXREwaFojJbpUvcIy4DiOnbEJFTA=
+github.com/gobuffalo/genny v0.0.0-20181017160347-90a774534246 h1:ap17NHnOCqCKBCeW7deVKkGFZcm7/Lro6uqdlvTXN2k=
+github.com/gobuffalo/genny v0.0.0-20181017160347-90a774534246/go.mod h1:+oG5Ljrw04czAHbPXREwaFojJbpUvcIy4DiOnbEJFTA=
 github.com/gobuffalo/github_flavored_markdown v1.0.5 h1:YvGVf7yj1akgsb+qc64Q0WX8uhpuZSibChbqOMRSAqE=
 github.com/gobuffalo/github_flavored_markdown v1.0.5/go.mod h1:U0643QShPF+OF2tJvYNiYDLDGDuQmJZXsf/bHOJPsMY=
 github.com/gobuffalo/packr v1.13.7 h1:2uZgLd6b/W4yRBZV/ScaORxZLNGMHO0VCvqQNkKukNA=

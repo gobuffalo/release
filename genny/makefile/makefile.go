@@ -29,7 +29,11 @@ func New(opts *Options) (*genny.Generator, error) {
 	g.Transformer(plushgen.Transformer(ctx))
 	g.Transformer(genny.Dot())
 	g.RunFn(gotools.Install("github.com/alecthomas/gometalinter"))
-	g.Command(exec.Command("gometalinter", "--install"))
+
+	g.RunFn(func(r *genny.Runner) error {
+		c := exec.Command("gometalinter", "--install")
+		return r.Exec(c)
+	})
 
 	return g, nil
 }
