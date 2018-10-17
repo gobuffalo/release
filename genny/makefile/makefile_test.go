@@ -1,21 +1,22 @@
 package makefile
 
 import (
-	"context"
 	"strings"
 	"testing"
 
-	"github.com/gobuffalo/genny"
+	"github.com/gobuffalo/genny/gentest"
 	"github.com/stretchr/testify/require"
 )
 
 func Test_New(t *testing.T) {
 	r := require.New(t)
 
-	g, err := New(&Options{})
+	g, err := New(&Options{
+		Root: ".",
+	})
 	r.NoError(err)
 
-	run := genny.DryRunner(context.Background())
+	run := gentest.NewRunner()
 	run.With(g)
 
 	r.NoError(run.Run())

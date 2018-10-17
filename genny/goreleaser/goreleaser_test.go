@@ -13,6 +13,7 @@ func Test_New(t *testing.T) {
 
 	g, err := New(&Options{
 		MainFile: "main.go",
+		Root:     ".",
 	})
 	r.NoError(err)
 

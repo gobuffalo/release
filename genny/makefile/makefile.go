@@ -13,6 +13,7 @@ import (
 
 func New(opts *Options) (*genny.Generator, error) {
 	g := genny.New()
+	g.Root = opts.Root
 
 	if err := opts.Validate(); err != nil {
 		return g, errors.WithStack(err)

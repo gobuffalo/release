@@ -11,6 +11,7 @@ type Options struct {
 	MainFile    string
 	BuildPath   string
 	VersionFile string
+	Root        string
 }
 
 // Validate that options are usuable
@@ -29,6 +30,9 @@ func (opts *Options) Validate() error {
 		if len(opts.BuildPath) > 0 {
 			opts.BuildPath = "./" + opts.BuildPath
 		}
+	}
+	if len(opts.Root) == 0 {
+		return errors.New("root can not be empty")
 	}
 	return nil
 }

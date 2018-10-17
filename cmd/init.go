@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"context"
+	"os"
 
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/release/genny/initgen"
@@ -27,6 +28,8 @@ var initCmd = &cobra.Command{
 		}
 
 		opts := initOptions.Options
+		pwd, _ := os.Getwd()
+		opts.Root = pwd
 
 		gg, err := initgen.New(opts)
 		if err != nil {

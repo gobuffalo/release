@@ -27,5 +27,8 @@ func (opts *Options) Validate() error {
 			return errors.Errorf("%s is not a .go file", opts.MainFile)
 		}
 	}
+	if len(opts.Root) == 0 {
+		return errors.New("root can not be empty")
+	}
 	return nil
 }

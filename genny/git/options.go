@@ -1,12 +1,10 @@
 package git
 
 type Options struct {
-  // add your stuff here
+	Root string
 }
-
 
 // Validate that options are usuable
 func (opts *Options) Validate() error {
-  return nil
+	return nil
 }
-

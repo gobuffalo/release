@@ -17,14 +17,15 @@ func New(opts *Options) (*genny.Group, error) {
 	if err := opts.Validate(); err != nil {
 		return gg, errors.WithStack(err)
 	}
-
 	g := genny.New()
 	g.Box(packr.NewBox("../initgen/templates"))
 	g.Transformer(genny.Dot())
 	gg.Add(g)
 
 	// set up git
-	g, err := git.New(&git.Options{})
+	g, err := git.New(&git.Options{
+		Root: opts.Root,
+	})
 	if err != nil {
 		return gg, errors.WithStack(err)
 	}
@@ -59,6 +60,7 @@ func New(opts *Options) (*genny.Group, error) {
 		Force:       opts.Force,
 		VersionFile: opts.VersionFile,
 		MainFile:    opts.MainFile,
+		Root:        opts.Root,
 	})
 	if err != nil {
 		return gg, errors.WithStack(err)
@@ -70,6 +72,7 @@ func New(opts *Options) (*genny.Group, error) {
 		g, err = goreleaser.New(&goreleaser.Options{
 			Force:    opts.Force,
 			MainFile: opts.MainFile,
+			Root:     opts.Root,
 		})
 		if err != nil {
 			return gg, errors.WithStack(err)

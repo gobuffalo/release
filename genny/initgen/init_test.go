@@ -16,6 +16,7 @@ func Test_New(t *testing.T) {
 	gg, err := New(&Options{
 		VersionFile: "foo/bar/version.go",
 		MainFile:    "./main.go",
+		Root:        ".",
 	})
 	r.NoError(err)
 

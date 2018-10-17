@@ -12,6 +12,7 @@ type Options struct {
 	MainFile  string
 	BrewOwner string
 	BrewTap   string
+	Root      string
 }
 
 // Validate that options are usuable
@@ -21,6 +22,10 @@ func (opts *Options) Validate() error {
 	}
 	if len(opts.BrewTap) == 0 {
 		opts.BrewTap = "homebrew-tap"
+	}
+
+	if len(opts.Root) == 0 {
+		return errors.New("root can not be empty")
 	}
 
 	if len(opts.BrewOwner) == 0 {
