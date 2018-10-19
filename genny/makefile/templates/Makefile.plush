@@ -50,5 +50,6 @@ release-test:
 	make tidy
 
 release:
+	make tidy
 	release -y <%= if (opts.VersionFile) { return "-f "+ opts.VersionFile } %>
 	make tidy
