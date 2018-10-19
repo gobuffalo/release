@@ -49,6 +49,6 @@ release-test:
 	$(GO_BIN) test -tags ${TAGS} -race ./...
 	make tidy
 
-release:
+me:
 	release -y -f ./release/version.go
 	make tidy
