@@ -114,4 +114,5 @@ func defaultVersionFile(name string) (genny.File, error) {
 
 const versionTmpl = `package <%= pkg %>
 
+// Version of <%= pkg %>
 const Version = ""`
