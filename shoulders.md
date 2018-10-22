@@ -79,6 +79,8 @@ Thank you to the following **GIANTS**:
 
 * [github.com/markbates/oncer](https://godoc.org/github.com/markbates/oncer)
 
+* [github.com/markbates/safe](https://godoc.org/github.com/markbates/safe)
+
 * [github.com/microcosm-cc/bluemonday](https://godoc.org/github.com/microcosm-cc/bluemonday)
 
 * [github.com/pkg/errors](https://godoc.org/github.com/pkg/errors)
