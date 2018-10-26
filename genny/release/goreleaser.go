@@ -37,7 +37,14 @@ func runGoreleaser(opts *Options) genny.RunFn {
 		}
 
 		ctx := plush.NewContext()
-		ctx.Set("brew", !(strings.Contains(opts.Version, "-beta") || strings.Contains(opts.Version, "-rc")))
+		brew := true
+		for _, x := range []string{"beta", "rc", "alpha"} {
+			if strings.Contains(opts.Version, x) {
+				brew = false
+				break
+			}
+		}
+		ctx.Set("brew", brew)
 		t := plushgen.Transformer(ctx)
 		f, err := t.Transform(gy)
 		if err != nil {

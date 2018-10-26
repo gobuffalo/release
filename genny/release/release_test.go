@@ -94,6 +94,7 @@ func Test_New_Goreleaser_Beta(t *testing.T) {
 		{"v1.0.0", true},
 		{"v1.0.0-beta.1", false},
 		{"v1.0.0-rc.1", false},
+		{"v1.0.0-alpha.1", false},
 	}
 
 	for _, tt := range table {
