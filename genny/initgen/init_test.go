@@ -38,7 +38,7 @@ func Test_New(t *testing.T) {
 		r.Equal(x, strings.TrimSpace(strings.Join(res.Commands[i].Args, " ")))
 	}
 
-	r.Len(res.Files, 6)
+	r.Len(res.Files, 7)
 
 	f := res.Files[0]
 	r.Equal(".gitignore", f.Name())
@@ -53,9 +53,12 @@ func Test_New(t *testing.T) {
 	r.Equal(".travis.yml", f.Name())
 
 	f = res.Files[4]
-	r.Equal("Makefile", f.Name())
+	r.Equal("LICENSE", f.Name())
 
 	f = res.Files[5]
+	r.Equal("Makefile", f.Name())
+
+	f = res.Files[6]
 	r.Equal("foo/bar/version.go", f.Name())
 	r.Contains(f.String(), `const Version = "v0.0.1"`)
 }

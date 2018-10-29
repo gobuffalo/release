@@ -3,6 +3,7 @@ package initgen
 import (
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
+	"github.com/gobuffalo/licenser/genny/licenser"
 	"github.com/gobuffalo/packr"
 	"github.com/gobuffalo/release/genny/git"
 	"github.com/gobuffalo/release/genny/goreleaser"
@@ -62,6 +63,13 @@ func New(opts *Options) (*genny.Group, error) {
 		MainFile:    opts.MainFile,
 		Root:        opts.Root,
 	})
+	if err != nil {
+		return gg, errors.WithStack(err)
+	}
+	gg.Add(g)
+
+	// generate a license
+	g, err = licenser.New(&licenser.Options{})
 	if err != nil {
 		return gg, errors.WithStack(err)
 	}
