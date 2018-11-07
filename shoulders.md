@@ -5,11 +5,23 @@ github.com/gobuffalo/release does not try to reinvent the wheel! Instead, it use
 Thank you to the following **GIANTS**:
 
 
+* [github.com/BurntSushi/toml](https://godoc.org/github.com/BurntSushi/toml)
+
 * [github.com/Masterminds/semver](https://godoc.org/github.com/Masterminds/semver)
 
 * [github.com/fatih/structs](https://godoc.org/github.com/fatih/structs)
 
+* [github.com/gobuffalo/buffalo-plugins/plugins](https://godoc.org/github.com/gobuffalo/buffalo-plugins/plugins)
+
+* [github.com/gobuffalo/buffalo-plugins/plugins/plugdeps](https://godoc.org/github.com/gobuffalo/buffalo-plugins/plugins/plugdeps)
+
 * [github.com/gobuffalo/envy](https://godoc.org/github.com/gobuffalo/envy)
+
+* [github.com/gobuffalo/events](https://godoc.org/github.com/gobuffalo/events)
+
+* [github.com/gobuffalo/flect](https://godoc.org/github.com/gobuffalo/flect)
+
+* [github.com/gobuffalo/flect/name](https://godoc.org/github.com/gobuffalo/flect/name)
 
 * [github.com/gobuffalo/genny](https://godoc.org/github.com/gobuffalo/genny)
 
@@ -38,6 +50,10 @@ Thank you to the following **GIANTS**:
 * [github.com/gobuffalo/licenser/genny/licenser](https://godoc.org/github.com/gobuffalo/licenser/genny/licenser)
 
 * [github.com/gobuffalo/logger](https://godoc.org/github.com/gobuffalo/logger)
+
+* [github.com/gobuffalo/mapi](https://godoc.org/github.com/gobuffalo/mapi)
+
+* [github.com/gobuffalo/meta](https://godoc.org/github.com/gobuffalo/meta)
 
 * [github.com/gobuffalo/packd](https://godoc.org/github.com/gobuffalo/packd)
 
@@ -86,6 +102,8 @@ Thank you to the following **GIANTS**:
 * [github.com/gofrs/uuid](https://godoc.org/github.com/gofrs/uuid)
 
 * [github.com/joho/godotenv](https://godoc.org/github.com/joho/godotenv)
+
+* [github.com/karrick/godirwalk](https://godoc.org/github.com/karrick/godirwalk)
 
 * [github.com/markbates/deplist](https://godoc.org/github.com/markbates/deplist)
 
