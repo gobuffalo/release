@@ -146,6 +146,7 @@ const Version = "development"
 
 const versionFileAfter = `package foo
 
+// Version of foo
 const Version = "v1.0.0"
 `
 
