@@ -141,6 +141,7 @@ func Test_New_Goreleaser_Beta(t *testing.T) {
 
 const versionFileBefore = `package foo
 
+// Version of foo
 const Version = "development"
 `
 
