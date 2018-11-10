@@ -60,8 +60,8 @@ github.com/gobuffalo/genny v0.0.0-20181012161047-33e5f43d83a6/go.mod h1:+oG5Ljrw
 github.com/gobuffalo/genny v0.0.0-20181017160347-90a774534246/go.mod h1:+oG5Ljrw04czAHbPXREwaFojJbpUvcIy4DiOnbEJFTA=
 github.com/gobuffalo/genny v0.0.0-20181024195656-51392254bf53/go.mod h1:o9GEH5gn5sCKLVB5rHFC4tq40rQ3VRUzmx6WwmaqISE=
 github.com/gobuffalo/genny v0.0.0-20181107223128-f18346459dbe/go.mod h1:utQD3aKKEsdb03oR+Vi/6ztQb1j7pO10N3OBoowRcSU=
-github.com/gobuffalo/genny v0.0.0-20181110160000-91f6b1c43e25 h1:Zvwk6hCDrYuu15jaPsXbLdtJ12SVh+/mV6uQhDQcfAQ=
-github.com/gobuffalo/genny v0.0.0-20181110160000-91f6b1c43e25/go.mod h1:118bnhJR2oviiji++mZj0IH/IaFBCzwkWHaI4OQq5hQ=
+github.com/gobuffalo/genny v0.0.0-20181110202416-7b7d8756a9e2 h1:sestDanFFYxCLNpYFxDU7GOND78FcQ0LAWNInXFSxNI=
+github.com/gobuffalo/genny v0.0.0-20181110202416-7b7d8756a9e2/go.mod h1:118bnhJR2oviiji++mZj0IH/IaFBCzwkWHaI4OQq5hQ=
 github.com/gobuffalo/github_flavored_markdown v1.0.4/go.mod h1:uRowCdK+q8d/RF0Kt3/DSalaIXbb0De/dmTqMQdkQ4I=
 github.com/gobuffalo/github_flavored_markdown v1.0.5/go.mod h1:U0643QShPF+OF2tJvYNiYDLDGDuQmJZXsf/bHOJPsMY=
 github.com/gobuffalo/github_flavored_markdown v1.0.7 h1:Vjvz4wqOnviiLEfTh5bh270b3lhpJiwwQEWOWmHMwY8=
