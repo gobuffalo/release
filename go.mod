@@ -3,7 +3,7 @@ module github.com/gobuffalo/release
 require (
 	github.com/Masterminds/semver v1.4.2
 	github.com/gobuffalo/envy v1.6.9
-	github.com/gobuffalo/genny v0.0.0-20181114191312-d317fbcbb93a
+	github.com/gobuffalo/genny v0.0.0-20181114215459-0a4decd77f5d
 	github.com/gobuffalo/github_flavored_markdown v1.0.7 // indirect
 	github.com/gobuffalo/licenser v0.0.0-20181109171355-91a2a7aac9a7
 	github.com/gobuffalo/packr v1.20.0
