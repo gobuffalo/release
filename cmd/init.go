@@ -26,6 +26,7 @@ var initCmd = &cobra.Command{
 		if initOptions.dryRun {
 			run = genny.DryRunner(context.Background())
 		}
+		// run.Logger = logger.New(logger.DebugLevel)
 
 		opts := initOptions.Options
 		pwd, _ := os.Getwd()
