@@ -9,12 +9,7 @@ require (
 	github.com/gobuffalo/packr v1.20.0
 	github.com/gobuffalo/plush v3.7.22+incompatible
 	github.com/gobuffalo/shoulders v1.0.1
-	github.com/gobuffalo/tags v2.0.11+incompatible // indirect
-	github.com/gobuffalo/uuid v2.0.5+incompatible // indirect
-	github.com/gobuffalo/validate v2.0.3+incompatible // indirect
-	github.com/gofrs/uuid v3.1.0+incompatible // indirect
-	github.com/kr/pty v1.1.3 // indirect
-	github.com/onsi/gomega v1.4.2 // indirect
+	github.com/markbates/deplist v1.0.5 // indirect
 	github.com/pkg/errors v0.8.0
 	github.com/spf13/cobra v0.0.3
 	github.com/stretchr/testify v1.2.2
