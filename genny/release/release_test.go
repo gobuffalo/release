@@ -42,14 +42,14 @@ func Test_New(t *testing.T) {
 	r.Len(res.Files, 2)
 
 	f := res.Files[0]
+	r.Equal("SHOULDERS.md", f.Name())
+	r.Contains(f.String(), "Stands on the Shoulders of Giants")
+
+	f = res.Files[1]
 	r.Equal("foo/version.go", f.Name())
 	body, err := ioutil.ReadAll(f)
 	r.NoError(err)
 	r.Equal(strings.TrimSpace(versionFileAfter), strings.TrimSpace(string(body)))
-
-	f = res.Files[1]
-	r.Equal("shoulders.md", f.Name())
-	r.Contains(f.String(), "Stands on the Shoulders of Giants")
 }
 
 func Test_New_Goreleaser(t *testing.T) {

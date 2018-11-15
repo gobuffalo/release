@@ -17,7 +17,7 @@ func runShoulders(r *genny.Runner) error {
 	if err := sh.Write(in); err != nil {
 		return errors.WithStack(err)
 	}
-	f := genny.NewFile("shoulders.md", in)
+	f := genny.NewFile("SHOULDERS.md", in)
 
 	return r.File(f)
 }
