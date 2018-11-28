@@ -46,7 +46,7 @@ var _ = func() error {
 	g.DefaultResolver = hgr
 
 	func() {
-		b := packr.New("../licenser/templates", "../licenser/templates")
+		b := packr.New("genny:licenser", "../licenser/templates")
 		b.SetResolver("agpl", packr.Pointer{ForwardBox: gk, ForwardPath: "38ff45a61f79481d5d34d8d9f9676c34"})
 		b.SetResolver("apache", packr.Pointer{ForwardBox: gk, ForwardPath: "0e36ab770b1ec79ef2649ec1552c94dc"})
 		b.SetResolver("artistic", packr.Pointer{ForwardBox: gk, ForwardPath: "e2a24d2b173d9a2c5c7d11e6a6f6630d"})
