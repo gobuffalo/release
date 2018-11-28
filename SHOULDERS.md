@@ -59,6 +59,18 @@ Thank you to the following **GIANTS**:
 
 * [github.com/gobuffalo/packr](https://godoc.org/github.com/gobuffalo/packr)
 
+* [github.com/gobuffalo/packr/v2](https://godoc.org/github.com/gobuffalo/packr/v2)
+
+* [github.com/gobuffalo/packr/v2/file](https://godoc.org/github.com/gobuffalo/packr/v2/file)
+
+* [github.com/gobuffalo/packr/v2/file/resolver](https://godoc.org/github.com/gobuffalo/packr/v2/file/resolver)
+
+* [github.com/gobuffalo/packr/v2/file/resolver/encoding/hex](https://godoc.org/github.com/gobuffalo/packr/v2/file/resolver/encoding/hex)
+
+* [github.com/gobuffalo/packr/v2/jam/parser](https://godoc.org/github.com/gobuffalo/packr/v2/jam/parser)
+
+* [github.com/gobuffalo/packr/v2/plog](https://godoc.org/github.com/gobuffalo/packr/v2/plog)
+
 * [github.com/gobuffalo/plush](https://godoc.org/github.com/gobuffalo/plush)
 
 * [github.com/gobuffalo/plush/ast](https://godoc.org/github.com/gobuffalo/plush/ast)
@@ -83,9 +95,13 @@ Thank you to the following **GIANTS**:
 
 * [github.com/gobuffalo/release/genny/release](https://godoc.org/github.com/gobuffalo/release/genny/release)
 
+* [github.com/gobuffalo/release/packrd](https://godoc.org/github.com/gobuffalo/release/packrd)
+
 * [github.com/gobuffalo/release/release](https://godoc.org/github.com/gobuffalo/release/release)
 
 * [github.com/gobuffalo/shoulders/shoulders](https://godoc.org/github.com/gobuffalo/shoulders/shoulders)
+
+* [github.com/gobuffalo/syncx](https://godoc.org/github.com/gobuffalo/syncx)
 
 * [github.com/gobuffalo/tags](https://godoc.org/github.com/gobuffalo/tags)
 
