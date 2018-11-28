@@ -33,8 +33,6 @@ Thank you to the following **GIANTS**:
 
 * [github.com/gobuffalo/genny/movinglater/gotools/gomods](https://godoc.org/github.com/gobuffalo/genny/movinglater/gotools/gomods)
 
-* [github.com/gobuffalo/plushgen](https://godoc.org/github.com/gobuffalo/plushgen)
-
 * [github.com/gobuffalo/github_flavored_markdown](https://godoc.org/github.com/gobuffalo/github_flavored_markdown)
 
 * [github.com/gobuffalo/github_flavored_markdown/internal/russross/blackfriday](https://godoc.org/github.com/gobuffalo/github_flavored_markdown/internal/russross/blackfriday)
@@ -57,8 +55,6 @@ Thank you to the following **GIANTS**:
 
 * [github.com/gobuffalo/packd](https://godoc.org/github.com/gobuffalo/packd)
 
-* [github.com/gobuffalo/packr](https://godoc.org/github.com/gobuffalo/packr)
-
 * [github.com/gobuffalo/packr/v2](https://godoc.org/github.com/gobuffalo/packr/v2)
 
 * [github.com/gobuffalo/packr/v2/file](https://godoc.org/github.com/gobuffalo/packr/v2/file)
@@ -80,6 +76,8 @@ Thank you to the following **GIANTS**:
 * [github.com/gobuffalo/plush/parser](https://godoc.org/github.com/gobuffalo/plush/parser)
 
 * [github.com/gobuffalo/plush/token](https://godoc.org/github.com/gobuffalo/plush/token)
+
+* [github.com/gobuffalo/plushgen](https://godoc.org/github.com/gobuffalo/plushgen)
 
 * [github.com/gobuffalo/release](https://godoc.org/github.com/gobuffalo/release)
 
