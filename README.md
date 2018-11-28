@@ -66,7 +66,7 @@ The basics of what this command does are the following:
 * Confirm semver version and branch
 * (write version file)
 * Generate shoulders.md file
-* Run `packr` to pack any boxes
+* Run `packr2` to pack any boxes
 * (make install)
 * (make release-test)
 * (commit version bump)

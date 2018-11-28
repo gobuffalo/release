@@ -4,7 +4,7 @@ import (
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
 	"github.com/gobuffalo/licenser/genny/licenser"
-	"github.com/gobuffalo/packr"
+	"github.com/gobuffalo/packr/v2"
 	"github.com/gobuffalo/release/genny/git"
 	"github.com/gobuffalo/release/genny/goreleaser"
 	"github.com/gobuffalo/release/genny/makefile"
@@ -19,7 +19,7 @@ func New(opts *Options) (*genny.Group, error) {
 		return gg, errors.WithStack(err)
 	}
 	g := genny.New()
-	g.Box(packr.NewBox("../initgen/templates"))
+	g.Box(packr.New("release:genny:initgen", "../initgen/templates"))
 	g.Transformer(genny.Dot())
 	gg.Add(g)
 

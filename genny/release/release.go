@@ -67,7 +67,7 @@ NOTE: PRs welcome to make this happen automatically. :)
 * confirm branch
 * (write version file)
 * shoulders
-* packr
+* packr2
 * (make install)
 * (make release-test)
 * commit (if changes)

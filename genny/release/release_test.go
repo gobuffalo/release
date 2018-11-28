@@ -34,10 +34,10 @@ func Test_New(t *testing.T) {
 	r.Len(res.Commands, 8)
 
 	c := res.Commands[0]
-	r.Equal("go get -v github.com/gobuffalo/packr/packr", strings.Join(c.Args, " "))
+	r.Equal("go get -v github.com/gobuffalo/packr/v2/packr2", strings.Join(c.Args, " "))
 
 	c = res.Commands[1]
-	r.Equal("packr -v", strings.Join(c.Args, " "))
+	r.Equal("packr2 -v", strings.Join(c.Args, " "))
 
 	r.Len(res.Files, 2)
 

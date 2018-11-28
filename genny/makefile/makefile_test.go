@@ -5,10 +5,13 @@ import (
 	"testing"
 
 	"github.com/gobuffalo/genny/gentest"
+	"github.com/gobuffalo/logger"
+	"github.com/gobuffalo/packr/v2/plog"
 	"github.com/stretchr/testify/require"
 )
 
 func Test_New(t *testing.T) {
+	plog.Logger = logger.New(logger.DebugLevel)
 	r := require.New(t)
 
 	g, err := New(&Options{
@@ -30,7 +33,6 @@ func Test_New(t *testing.T) {
 
 	c = res.Commands[1]
 	r.Equal("gometalinter --install", strings.Join(c.Args, " "))
-
 	r.Len(res.Files, 2)
 
 	f := res.Files[0]

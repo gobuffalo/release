@@ -5,7 +5,7 @@ import (
 
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/movinglater/gotools"
-	"github.com/gobuffalo/packr"
+	"github.com/gobuffalo/packr/v2"
 	"github.com/pkg/errors"
 )
 
@@ -16,7 +16,7 @@ func New(opts *Options) (*genny.Generator, error) {
 		return g, errors.WithStack(err)
 	}
 
-	box := packr.NewBox("../goreleaser/templates")
+	box := packr.New("release:genny:goreleaser", "../goreleaser/templates")
 	if err := genny.ForceBox(g, box, opts.Force); err != nil {
 		return g, errors.WithStack(err)
 	}
