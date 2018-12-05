@@ -22,7 +22,9 @@ func New(opts *Options) (*genny.Generator, error) {
 
 	g.RunFn(runShoulders)
 
-	g.RunFn(runPackr(opts))
+	if !opts.SkipPackr {
+		g.RunFn(runPackr(opts))
+	}
 
 	g.RunFn(makeInstall)
 

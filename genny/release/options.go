@@ -12,6 +12,7 @@ type Options struct {
 	Branch      string
 	VersionFile string
 	LegacyPackr bool
+	SkipPackr   bool
 	semVersion  *semver.Version
 	// add your stuff here
 }
