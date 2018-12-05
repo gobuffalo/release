@@ -24,6 +24,7 @@ var releaseOptions = struct {
 
 func init() {
 	rootCmd.Flags().BoolVarP(&releaseOptions.dryRun, "dry-run", "d", false, "runs the release without actually releasing")
+	rootCmd.Flags().BoolVar(&releaseOptions.LegacyPackr, "legacy-packr", false, "uses the --legacy flag for packr")
 	rootCmd.Flags().BoolVarP(&releaseOptions.yesToAll, "yes", "y", false, "yes to all prompts")
 	rootCmd.Flags().StringVarP(&releaseOptions.Version, "version", "v", "", "version you want to release")
 	b, err := currentBranch()
