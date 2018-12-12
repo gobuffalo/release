@@ -19,7 +19,7 @@ func New(opts *Options) (*genny.Group, error) {
 		return gg, errors.WithStack(err)
 	}
 	g := genny.New()
-	g.Box(packr.New("release:genny:initgen", "../initgen/templates"))
+	g.Box(packr.New("github.com/gobuffalo/release/genny/initgen/templates", "../initgen/templates"))
 	g.Transformer(genny.Dot())
 	gg.Add(g)
 

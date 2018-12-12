@@ -19,7 +19,7 @@ func New(opts *Options) (*genny.Generator, error) {
 		return g, errors.WithStack(err)
 	}
 
-	box := packr.New("release:genny:makefile", "../makefile/templates")
+	box := packr.New("github.com/gobuffalo/release/genny/makefile/templates", "../makefile/templates")
 	if err := genny.ForceBox(g, box, opts.Force); err != nil {
 		return g, errors.WithStack(err)
 	}

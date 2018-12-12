@@ -2,10 +2,10 @@ package initgen
 
 import (
 	"context"
-	"strings"
 	"testing"
 
 	"github.com/gobuffalo/genny"
+	"github.com/gobuffalo/genny/gentest"
 	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
 	"github.com/stretchr/testify/require"
 )
@@ -33,32 +33,20 @@ func Test_New(t *testing.T) {
 		cmds = []string{"git init", "go mod init", "go get github.com/alecthomas/gometalinter", "gometalinter --install", "go mod tidy"}
 	}
 
-	r.Len(res.Commands, len(cmds))
-	for i, x := range cmds {
-		r.Equal(x, strings.TrimSpace(strings.Join(res.Commands[i].Args, " ")))
+	r.NoError(gentest.CompareCommands(cmds, res.Commands))
+
+	files := []string{
+		".gitignore",
+		".gometalinter.json",
+		".goreleaser.yml.plush",
+		".travis.yml",
+		"LICENSE",
+		"Makefile",
+		"foo/bar/version.go",
 	}
+	r.NoError(gentest.CompareFiles(files, res.Files))
 
-	r.Len(res.Files, 7)
-
-	f := res.Files[0]
-	r.Equal(".gitignore", f.Name())
-
-	f = res.Files[1]
-	r.Equal(".gometalinter.json", f.Name())
-
-	f = res.Files[2]
-	r.Equal(".goreleaser.yml.plush", f.Name())
-
-	f = res.Files[3]
-	r.Equal(".travis.yml", f.Name())
-
-	f = res.Files[4]
-	r.Equal("LICENSE", f.Name())
-
-	f = res.Files[5]
-	r.Equal("Makefile", f.Name())
-
-	f = res.Files[6]
-	r.Equal("foo/bar/version.go", f.Name())
+	f, err := res.Find("foo/bar/version.go")
+	r.NoError(err)
 	r.Contains(f.String(), `const Version = "v0.0.1"`)
 }
