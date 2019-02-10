@@ -31,6 +31,9 @@ matrix:
 
 install: false
 
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "windows" ]]; then choco install make ; fi
+
 script:
   - go get -v -t ./...
   - go test -v  -timeout=5s -race ./...
