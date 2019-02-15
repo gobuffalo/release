@@ -7,135 +7,146 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/gobuffalo/envy"
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/release/genny/release"
 	"github.com/stretchr/testify/require"
 )
 
 func Test_New(t *testing.T) {
-	r := require.New(t)
-	opts := &release.Options{
-		Version:     "v1.0.0",
-		GitHubToken: "MYTOKEN",
-		VersionFile: filepath.Join("foo", "version.go"),
-		Branch:      "master",
-	}
-	g, err := release.New(opts)
-	r.NoError(err)
+	envy.Temp(func() {
+		envy.Set(envy.GO111MODULE, "off")
+		r := require.New(t)
+		opts := &release.Options{
+			Version:     "v1.0.0",
+			GitHubToken: "MYTOKEN",
+			VersionFile: filepath.Join("foo", "version.go"),
+			Branch:      "master",
+		}
+		g, err := release.New(opts)
+		r.NoError(err)
 
-	run := genny.DryRunner(context.Background())
-	run.Disk.Add(genny.NewFile(opts.VersionFile, strings.NewReader(versionFileBefore)))
-	run.With(g)
+		run := genny.DryRunner(context.Background())
+		run.Disk.Add(genny.NewFile(opts.VersionFile, strings.NewReader(versionFileBefore)))
+		run.With(g)
 
-	r.NoError(run.Run())
+		r.NoError(run.Run())
 
-	res := run.Results()
+		res := run.Results()
 
-	r.Len(res.Commands, 8)
+		r.Len(res.Commands, 8)
 
-	c := res.Commands[0]
-	r.Equal("go get -v github.com/gobuffalo/packr/v2/packr2", strings.Join(c.Args, " "))
+		c := res.Commands[0]
+		r.Equal("go get -v github.com/gobuffalo/packr/v2/packr2", strings.Join(c.Args, " "))
 
-	c = res.Commands[1]
-	r.Equal("packr2 -v", strings.Join(c.Args, " "))
+		c = res.Commands[1]
+		r.Equal("packr2 -v", strings.Join(c.Args, " "))
 
-	r.Len(res.Files, 2)
+		r.Len(res.Files, 2)
 
-	f := res.Files[0]
-	r.Equal("SHOULDERS.md", f.Name())
-	r.Contains(f.String(), "Stands on the Shoulders of Giants")
+		f := res.Files[0]
+		r.Equal("SHOULDERS.md", f.Name())
+		r.Contains(f.String(), "Stands on the Shoulders of Giants")
 
-	f = res.Files[1]
-	r.Equal("foo/version.go", f.Name())
-	body, err := ioutil.ReadAll(f)
-	r.NoError(err)
-	r.Equal(strings.TrimSpace(versionFileAfter), strings.TrimSpace(string(body)))
+		f = res.Files[1]
+		r.Equal("foo/version.go", f.Name())
+		body, err := ioutil.ReadAll(f)
+		r.NoError(err)
+		r.Equal(strings.TrimSpace(versionFileAfter), strings.TrimSpace(string(body)))
+	})
 }
 
 func Test_New_Goreleaser(t *testing.T) {
-	r := require.New(t)
+	envy.Temp(func() {
+		envy.Set(envy.GO111MODULE, "off")
+		r := require.New(t)
 
-	run := genny.DryRunner(context.Background())
+		run := genny.DryRunner(context.Background())
 
-	opts := &release.Options{
-		Version:     "v1.0.0",
-		GitHubToken: "MYTOKEN",
-		VersionFile: filepath.Join("foo", "version.go"),
-		Branch:      "master",
-	}
-	g, err := release.New(opts)
-	r.NoError(err)
+		opts := &release.Options{
+			Version:     "v1.0.0",
+			GitHubToken: "MYTOKEN",
+			VersionFile: filepath.Join("foo", "version.go"),
+			Branch:      "master",
+		}
+		g, err := release.New(opts)
+		r.NoError(err)
 
-	run.Disk.Add(genny.NewFile(opts.VersionFile, strings.NewReader(versionFileBefore)))
-	run.Disk.Add(genny.NewFile(".goreleaser.yml.plush", strings.NewReader(goReleaserTmpl)))
+		run.Disk.Add(genny.NewFile(opts.VersionFile, strings.NewReader(versionFileBefore)))
+		run.Disk.Add(genny.NewFile(".goreleaser.yml.plush", strings.NewReader(goReleaserTmpl)))
 
-	run.With(g)
+		run.With(g)
 
-	r.NoError(run.Run())
+		r.NoError(run.Run())
 
-	res := run.Results()
+		res := run.Results()
 
-	r.Len(res.Commands, 11)
-	c := res.Commands[10]
-	r.Equal("goreleaser", strings.Join(c.Args, " "))
+		r.Len(res.Commands, 11)
+		c := res.Commands[10]
+		r.Equal("goreleaser", strings.Join(c.Args, " "))
 
-	r.Len(res.Files, 4)
+		r.Len(res.Files, 4)
 
-	f := res.Files[0]
-	r.Equal(".goreleaser.yml", f.Name())
-	r.Contains(f.String(), "brew:")
+		f := res.Files[0]
+		r.Equal(".goreleaser.yml", f.Name())
+		r.Contains(f.String(), "brew:")
+	})
 }
 
 func Test_New_Goreleaser_Beta(t *testing.T) {
-	table := []struct {
-		version string
-		brew    bool
-	}{
-		{"v1.0.0", true},
-		{"v1.0.0-beta.1", false},
-		{"v1.0.0-rc.1", false},
-		{"v1.0.0-alpha.1", false},
-	}
+	envy.Temp(func() {
+		envy.Set(envy.GO111MODULE, "off")
 
-	for _, tt := range table {
-		t.Run(tt.version, func(st *testing.T) {
-			r := require.New(st)
-			run := genny.DryRunner(context.Background())
+		table := []struct {
+			version string
+			brew    bool
+		}{
+			{"v1.0.0", true},
+			{"v1.0.0-beta.1", false},
+			{"v1.0.0-rc.1", false},
+			{"v1.0.0-alpha.1", false},
+		}
 
-			opts := &release.Options{
-				Version:     tt.version,
-				GitHubToken: "MYTOKEN",
-				VersionFile: filepath.Join("foo", "version.go"),
-				Branch:      "master",
-			}
-			g, err := release.New(opts)
-			r.NoError(err)
+		for _, tt := range table {
+			t.Run(tt.version, func(st *testing.T) {
+				r := require.New(st)
+				run := genny.DryRunner(context.Background())
 
-			run.Disk.Add(genny.NewFile(opts.VersionFile, strings.NewReader(versionFileBefore)))
-			run.Disk.Add(genny.NewFile(".goreleaser.yml.plush", strings.NewReader(goReleaserTmpl)))
+				opts := &release.Options{
+					Version:     tt.version,
+					GitHubToken: "MYTOKEN",
+					VersionFile: filepath.Join("foo", "version.go"),
+					Branch:      "master",
+				}
+				g, err := release.New(opts)
+				r.NoError(err)
 
-			run.With(g)
+				run.Disk.Add(genny.NewFile(opts.VersionFile, strings.NewReader(versionFileBefore)))
+				run.Disk.Add(genny.NewFile(".goreleaser.yml.plush", strings.NewReader(goReleaserTmpl)))
 
-			r.NoError(run.Run())
+				run.With(g)
 
-			res := run.Results()
+				r.NoError(run.Run())
 
-			r.Len(res.Commands, 11)
-			c := res.Commands[10]
-			r.Equal("goreleaser", strings.Join(c.Args, " "))
+				res := run.Results()
 
-			r.Len(res.Files, 4)
+				r.Len(res.Commands, 11)
+				c := res.Commands[10]
+				r.Equal("goreleaser", strings.Join(c.Args, " "))
 
-			f := res.Files[0]
-			r.Equal(".goreleaser.yml", f.Name())
-			if tt.brew {
-				r.Contains(f.String(), "brew:")
-			} else {
-				r.NotContains(f.String(), "brew:")
-			}
+				r.Len(res.Files, 4)
 
-		})
-	}
+				f := res.Files[0]
+				r.Equal(".goreleaser.yml", f.Name())
+				if tt.brew {
+					r.Contains(f.String(), "brew:")
+				} else {
+					r.NotContains(f.String(), "brew:")
+				}
+
+			})
+		}
+	})
 
 }
 
