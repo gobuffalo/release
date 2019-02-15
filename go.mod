@@ -11,7 +11,7 @@ require (
 	github.com/gobuffalo/packr/v2 v2.0.1
 	github.com/gobuffalo/plush v3.7.33+incompatible
 	github.com/gobuffalo/plushgen v0.0.0-20190104222512-177cd2b872b3
-	github.com/gobuffalo/shoulders v1.0.1
+	github.com/gobuffalo/shoulders v1.0.3
 	github.com/gobuffalo/tags v2.0.15+incompatible // indirect
 	github.com/gobuffalo/uuid v2.0.5+incompatible // indirect
 	github.com/gobuffalo/validate v2.0.3+incompatible // indirect
