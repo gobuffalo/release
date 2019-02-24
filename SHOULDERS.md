@@ -40,5 +40,3 @@ Thank you to the following **GIANTS**:
 * [github.com/spf13/cobra](https://godoc.org/github.com/spf13/cobra)
 
 * [github.com/stretchr/testify](https://godoc.org/github.com/stretchr/testify)
-
-* [golang.org/x/crypto](https://godoc.org/golang.org/x/crypto)
