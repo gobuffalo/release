@@ -4,7 +4,7 @@ require (
 	github.com/Masterminds/semver v1.4.2
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/gobuffalo/envy v1.6.15
-	github.com/gobuffalo/genny v0.0.0-20190131190646-008a76242145
+	github.com/gobuffalo/genny v0.0.0-20190219203444-c95082806342
 	github.com/gobuffalo/github_flavored_markdown v1.0.7 // indirect
 	github.com/gobuffalo/licenser v0.0.0-20181211173111-f8a311c51159
 	github.com/gobuffalo/logger v0.0.0-20181127160119-5b956e21995c
@@ -19,5 +19,4 @@ require (
 	github.com/pkg/errors v0.8.1
 	github.com/spf13/cobra v0.0.3
 	github.com/stretchr/testify v1.3.0
-	golang.org/x/crypto v0.0.0-20190103213133-ff983b9c42bc // indirect
 )

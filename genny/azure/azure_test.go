@@ -21,8 +21,8 @@ func Test_New(t *testing.T) {
 	res := run.Results()
 
 	r.Len(res.Commands, 0)
-	r.Len(res.Files, 1)
+	r.Len(res.Files, 2)
 
-	f := res.Files[0]
-	r.Equal("example.txt", f.Name())
+	err = gentest.CompareFiles([]string{"azure-pipelines.yml", "azure-tests.yml"}, res.Files)
+	r.NoError(err)
 }
