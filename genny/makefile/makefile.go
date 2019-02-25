@@ -4,7 +4,7 @@ import (
 	"os/exec"
 
 	"github.com/gobuffalo/genny"
-	"github.com/gobuffalo/genny/movinglater/gotools"
+	"github.com/gobuffalo/gogen"
 	"github.com/gobuffalo/packr/v2"
 	"github.com/gobuffalo/plush"
 	"github.com/gobuffalo/plushgen"
@@ -28,7 +28,7 @@ func New(opts *Options) (*genny.Generator, error) {
 	ctx.Set("opts", opts)
 	g.Transformer(plushgen.Transformer(ctx))
 	g.Transformer(genny.Dot())
-	g.RunFn(gotools.Install("github.com/alecthomas/gometalinter"))
+	g.RunFn(gogen.Install("github.com/alecthomas/gometalinter"))
 
 	g.RunFn(func(r *genny.Runner) error {
 		c := exec.Command("gometalinter", "--install")

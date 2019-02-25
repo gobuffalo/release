@@ -7,7 +7,7 @@ import (
 	"strings"
 
 	"github.com/gobuffalo/genny"
-	"github.com/gobuffalo/genny/movinglater/git"
+	"github.com/gobuffalo/gitgen"
 	"github.com/gobuffalo/plush"
 	"github.com/gobuffalo/plushgen"
 	"github.com/pkg/errors"
@@ -55,13 +55,13 @@ func runGoreleaser(opts *Options) genny.RunFn {
 			return errors.WithStack(err)
 		}
 
-		if err := git.Run("add", ".goreleaser.yml")(r); err != nil {
-			if errors.Cause(err) != git.ErrWorkingTreeClean {
+		if err := gitgen.Run("add", ".goreleaser.yml")(r); err != nil {
+			if errors.Cause(err) != gitgen.ErrWorkingTreeClean {
 				return errors.WithStack(err)
 			}
 		}
-		if err := git.Run("commit", "-m", "generated goreleaser", ".goreleaser.yml")(r); err != nil {
-			if errors.Cause(err) != git.ErrWorkingTreeClean {
+		if err := gitgen.Run("commit", "-m", "generated goreleaser", ".goreleaser.yml")(r); err != nil {
+			if errors.Cause(err) != gitgen.ErrWorkingTreeClean {
 				return errors.WithStack(err)
 			}
 		}

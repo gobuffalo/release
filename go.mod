@@ -5,12 +5,14 @@ require (
 	github.com/fatih/structs v1.1.0 // indirect
 	github.com/gobuffalo/envy v1.6.15
 	github.com/gobuffalo/genny v0.0.0-20190219203444-c95082806342
+	github.com/gobuffalo/gitgen v0.0.0-20190224210055-cbdf1665446e
 	github.com/gobuffalo/github_flavored_markdown v1.0.7 // indirect
-	github.com/gobuffalo/licenser v0.0.0-20181211173111-f8a311c51159
-	github.com/gobuffalo/logger v0.0.0-20181127160119-5b956e21995c
+	github.com/gobuffalo/gogen v0.0.0-20190224213239-1c6076128bbc
+	github.com/gobuffalo/licenser v0.0.0-20190224205124-37799bc2ebf6
+	github.com/gobuffalo/logger v0.0.0-20190224201004-be78ebfea0fa
 	github.com/gobuffalo/packr/v2 v2.0.1
 	github.com/gobuffalo/plush v3.7.33+incompatible
-	github.com/gobuffalo/plushgen v0.0.0-20190104222512-177cd2b872b3
+	github.com/gobuffalo/plushgen v0.0.0-20190224160205-347ea233336e
 	github.com/gobuffalo/shoulders v1.0.3
 	github.com/gobuffalo/tags v2.0.15+incompatible // indirect
 	github.com/gobuffalo/uuid v2.0.5+incompatible // indirect
