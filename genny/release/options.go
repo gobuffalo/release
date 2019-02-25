@@ -1,6 +1,8 @@
 package release
 
 import (
+	"strings"
+
 	"github.com/Masterminds/semver"
 	"github.com/gobuffalo/envy"
 	"github.com/pkg/errors"
@@ -27,6 +29,9 @@ func (opts *Options) Validate() error {
 	}
 	if len(opts.Version) == 0 {
 		opts.Version = "v0.0.1"
+	}
+	if !strings.HasPrefix(opts.Version, "v") {
+		opts.Version = "v" + opts.Version
 	}
 	v, err := semver.NewVersion(opts.Version)
 	if err != nil {
