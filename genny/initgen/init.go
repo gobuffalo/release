@@ -4,7 +4,7 @@ import (
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
 	"github.com/gobuffalo/licenser/genny/licenser"
-	"github.com/gobuffalo/packr/v2"
+	"github.com/gobuffalo/release/genny/azure"
 	"github.com/gobuffalo/release/genny/git"
 	"github.com/gobuffalo/release/genny/goreleaser"
 	"github.com/gobuffalo/release/genny/makefile"
@@ -19,7 +19,6 @@ func New(opts *Options) (*genny.Group, error) {
 		return gg, errors.WithStack(err)
 	}
 	g := genny.New()
-	g.Box(packr.New("github.com/gobuffalo/release/genny/initgen/templates", "../initgen/templates"))
 	g.Transformer(genny.Dot())
 	gg.Add(g)
 
@@ -45,6 +44,14 @@ func New(opts *Options) (*genny.Group, error) {
 
 	// set up go mods if enabled
 	g, err = gomods.Init("", opts.Root)
+	if err != nil {
+		return gg, errors.WithStack(err)
+	}
+	gg.Add(g)
+
+	g, err = azure.New(&azure.Options{
+		Force: opts.Force,
+	})
 	if err != nil {
 		return gg, errors.WithStack(err)
 	}
