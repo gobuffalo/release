@@ -1,6 +1,7 @@
 package initgen
 
 import (
+	"os"
 	"path/filepath"
 
 	"github.com/pkg/errors"
@@ -16,6 +17,9 @@ type Options struct {
 
 // Validate that options are usuable
 func (opts *Options) Validate() error {
+	if len(opts.Root) == 0 {
+		return errors.New("root can not be empty")
+	}
 	if len(opts.Version) == 0 {
 		opts.Version = "v0.0.1"
 	}
@@ -26,9 +30,10 @@ func (opts *Options) Validate() error {
 		if filepath.Ext(opts.MainFile) != ".go" {
 			return errors.Errorf("%s is not a .go file", opts.MainFile)
 		}
-	}
-	if len(opts.Root) == 0 {
-		return errors.New("root can not be empty")
+	} else {
+		if _, err := os.Stat(filepath.Join(opts.Root, "main.go")); err == nil {
+			opts.MainFile = "main.go"
+		}
 	}
 	return nil
 }
