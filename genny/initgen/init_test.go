@@ -28,16 +28,15 @@ func Test_New(t *testing.T) {
 	var cmds []string
 	res := run.Results()
 	if !gomods.On() {
-		cmds = []string{"git init", "go get github.com/alecthomas/gometalinter", "gometalinter --install"}
+		cmds = []string{"git init"}
 	} else {
-		cmds = []string{"git init", "go mod init", "go get github.com/alecthomas/gometalinter", "gometalinter --install", "go mod tidy"}
+		cmds = []string{"git init", "go mod init", "go mod tidy"}
 	}
 
 	r.NoError(gentest.CompareCommands(cmds, res.Commands))
 
 	files := []string{
 		".gitignore",
-		".gometalinter.json",
 		".goreleaser.yml.plush",
 		"azure-pipelines.yml",
 		"azure-tests.yml",

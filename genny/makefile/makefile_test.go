@@ -25,9 +25,9 @@ func Test_New(t *testing.T) {
 
 	res := run.Results()
 
-	cmds := []string{"go get github.com/alecthomas/gometalinter", "gometalinter --install"}
+	cmds := []string{}
 	r.NoError(gentest.CompareCommands(cmds, res.Commands))
 
-	files := []string{".gometalinter.json", "Makefile"}
+	files := []string{"Makefile"}
 	r.NoError(gentest.CompareFiles(files, res.Files))
 }
