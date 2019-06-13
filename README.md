@@ -2,6 +2,7 @@
 
 <p align="center">
 <a href="https://godoc.org/github.com/gobuffalo/release"><img src="https://godoc.org/github.com/gobuffalo/release?status.svg" alt="GoDoc" /></a>
+<a href="https://dev.azure.com/markbates/buffalo/_build?definitionId=3"><img src="https://dev.azure.com/markbates/buffalo/_apis/build/status/gobuffalo.release?branchName=master" alt="CI" /></a>
 <a href="https://goreportcard.com/report/github.com/gobuffalo/release"><img src="https://goreportcard.com/badge/github.com/gobuffalo/release" alt="Go Report Card" /></a>
 </p>
 
