@@ -54,7 +54,7 @@ release-test: <%= if (opts.WithPackr) {return "packr"} %>
 release:
 	$(GO_BIN) get github.com/gobuffalo/release
 	make tidy
-	release -y <%= if (opts.VersionFile) { return "-f "+ opts.VersionFile } %> <%= if (!opts.WithPackr) { return "--skip-packr" } %>
+	release -y <%= if (opts.VersionFile) { return ( "-f "+ opts.VersionFile ) } %> <%= if (!opts.WithPackr) { return "--skip-packr" } %>
 	make tidy
 <%= if (opts.WithPackr) { %>
 packr:
