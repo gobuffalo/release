@@ -64,12 +64,7 @@ func New(opts *Options) (*genny.Group, error) {
 	}))
 
 	// write a new makefile
-	g, err = makefile.New(&makefile.Options{
-		Force:       opts.Force,
-		VersionFile: opts.VersionFile,
-		MainFile:    opts.MainFile,
-		Root:        opts.Root,
-	})
+	g, err = makefile.New(opts.Options)
 	if err != nil {
 		return gg, errors.WithStack(err)
 	}

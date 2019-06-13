@@ -12,6 +12,8 @@ type Options struct {
 	BuildPath   string
 	VersionFile string
 	Root        string
+	Tags        []string
+	WithPackr   bool
 }
 
 // Validate that options are usuable

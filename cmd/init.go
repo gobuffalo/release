@@ -6,6 +6,7 @@ import (
 
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/release/genny/initgen"
+	"github.com/gobuffalo/release/genny/makefile"
 	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )
@@ -14,7 +15,9 @@ var initOptions = struct {
 	*initgen.Options
 	dryRun bool
 }{
-	Options: &initgen.Options{},
+	Options: &initgen.Options{
+		Options: &makefile.Options{},
+	},
 }
 
 // initCmd represents the init command
@@ -26,7 +29,6 @@ var initCmd = &cobra.Command{
 		if initOptions.dryRun {
 			run = genny.DryRunner(context.Background())
 		}
-		// run.Logger = logger.New(logger.DebugLevel)
 
 		opts := initOptions.Options
 		pwd, _ := os.Getwd()
@@ -46,16 +48,8 @@ func init() {
 	rootCmd.AddCommand(initCmd)
 	initCmd.Flags().BoolVarP(&initOptions.dryRun, "dry-run", "d", false, "runs the generator dry")
 	initCmd.Flags().BoolVarP(&initOptions.Force, "force", "f", false, "force files to overwrite existing ones")
+	initCmd.Flags().BoolVarP(&initOptions.WithPackr, "with-packr", "p", false, "use packr2")
 	initCmd.Flags().StringVarP(&initOptions.MainFile, "main-file", "m", "", "adds a .goreleaser.yml file (only for binary applications)")
 	initCmd.Flags().StringVarP(&initOptions.VersionFile, "version-file", "v", "version.go", "path to a version file to maintain")
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// initCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// initCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	initCmd.Flags().StringSliceVarP(&initOptions.Tags, "tags", "t", []string{}, "tags for the Makefile")
 }

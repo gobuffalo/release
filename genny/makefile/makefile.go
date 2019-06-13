@@ -1,6 +1,8 @@
 package makefile
 
 import (
+	"strings"
+
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/packr/v2"
 	"github.com/gobuffalo/plush"
@@ -23,6 +25,7 @@ func New(opts *Options) (*genny.Generator, error) {
 
 	ctx := plush.NewContext()
 	ctx.Set("opts", opts)
+	ctx.Set("tags", strings.Join(opts.Tags, " "))
 	g.Transformer(plushgen.Transformer(ctx))
 	g.Transformer(genny.Dot())
 

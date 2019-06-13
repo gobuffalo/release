@@ -7,6 +7,7 @@ import (
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/gentest"
 	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
+	"github.com/gobuffalo/release/genny/makefile"
 	"github.com/stretchr/testify/require"
 )
 
@@ -15,8 +16,10 @@ func Test_New(t *testing.T) {
 
 	gg, err := New(&Options{
 		VersionFile: "foo/bar/version.go",
-		MainFile:    "./main.go",
-		Root:        ".",
+		Options: &makefile.Options{
+			MainFile: "./main.go",
+			Root:     ".",
+		},
 	})
 	r.NoError(err)
 

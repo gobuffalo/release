@@ -4,15 +4,15 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/gobuffalo/release/genny/makefile"
 	"github.com/pkg/errors"
 )
 
 type Options struct {
+	*makefile.Options
 	VersionFile string
 	Version     string
-	MainFile    string
 	Force       bool
-	Root        string
 }
 
 // Validate that options are usuable
