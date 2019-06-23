@@ -9,9 +9,9 @@ import (
 	"strings"
 
 	"github.com/gobuffalo/genny"
-	"github.com/gobuffalo/genny/movinglater/gotools"
+	"github.com/gobuffalo/genny/gogen"
+	"github.com/gobuffalo/genny/plushgen"
 	"github.com/gobuffalo/plush"
-	"github.com/gobuffalo/plushgen"
 	"github.com/pkg/errors"
 )
 
@@ -84,7 +84,7 @@ func defaultVersionFile(name string) (genny.File, error) {
 				return nil, errors.WithStack(err)
 			}
 			xf := genny.NewFile(fi.Name(), bytes.NewReader(b))
-			pkg, err = gotools.PackageName(xf)
+			pkg, err = gogen.PackageName(xf)
 			if err != nil {
 				return nil, errors.WithStack(err)
 			}

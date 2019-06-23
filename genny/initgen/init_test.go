@@ -6,7 +6,7 @@ import (
 
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/genny/gentest"
-	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
+	"github.com/gobuffalo/genny/gogen/gomods"
 	"github.com/gobuffalo/release/genny/makefile"
 	"github.com/stretchr/testify/require"
 )

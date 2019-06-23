@@ -2,7 +2,7 @@ package initgen
 
 import (
 	"github.com/gobuffalo/genny"
-	"github.com/gobuffalo/genny/movinglater/gotools/gomods"
+	"github.com/gobuffalo/genny/gogen/gomods"
 	"github.com/gobuffalo/licenser/genny/licenser"
 	"github.com/gobuffalo/release/genny/azure"
 	"github.com/gobuffalo/release/genny/git"
