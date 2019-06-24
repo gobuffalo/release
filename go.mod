@@ -6,7 +6,7 @@ require (
 	github.com/Masterminds/semver v1.4.2
 	github.com/gobuffalo/envy v1.7.0
 	github.com/gobuffalo/genny v0.3.0
-	github.com/gobuffalo/licenser v1.1.0
+	github.com/gobuffalo/licenser v1.2.0
 	github.com/gobuffalo/logger v0.0.0-20190315122211-86e12af44bc2
 	github.com/gobuffalo/packr/v2 v2.4.0
 	github.com/gobuffalo/plush v3.8.2+incompatible
