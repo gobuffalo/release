@@ -24,7 +24,6 @@ github.com/gobuffalo/genny v0.3.0/go.mod h1:ywJ2CoXrTZj7rbS8HTbzv7uybnLKlsNSBhEQ
 github.com/gobuffalo/github_flavored_markdown v1.0.7/go.mod h1:w93Pd9Lz6LvyQXEG6DktTPHkOtCbr+arAD5mkwMzXLI=
 github.com/gobuffalo/github_flavored_markdown v1.1.0 h1:8Zzj4fTRl/OP2R7sGerzSf6g2nEJnaBEJe7UAOiEvbQ=
 github.com/gobuffalo/github_flavored_markdown v1.1.0/go.mod h1:TSpTKWcRTI0+v7W3x8dkSKMLJSUpuVitlptCkpeY8ic=
-github.com/gobuffalo/gogen v0.2.0 h1:Xx7NCe+/y++eII2aWAFZ09/81MhDCsZwvMzIFJoQRnU=
 github.com/gobuffalo/gogen v0.2.0/go.mod h1:V9QVDIxsgKNZs6L2IYiGR8datgMhB577vzTDqypH360=
 github.com/gobuffalo/helpers v0.2.2 h1:AAu+rUINhzIii77xzuih26Q0ZJgOcLkf37FaBcv2diU=
 github.com/gobuffalo/helpers v0.2.2/go.mod h1:xYbzUdCUpVzLwLnqV8HIjT6hmG0Cs7YIBCJkNM597jw=

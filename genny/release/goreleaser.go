@@ -1,6 +1,7 @@
 package release
 
 import (
+	"fmt"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -11,10 +12,9 @@ import (
 	"github.com/gobuffalo/genny/plushgen"
 	"github.com/gobuffalo/plush"
 	"github.com/gobuffalo/release/internal/errx"
-	"github.com/pkg/errors"
 )
 
-var errFileNotFound = errors.New("file not found")
+var errFileNotFound = fmt.Errorf("file not found")
 
 func releaserFile(r *genny.Runner) (genny.File, error) {
 	if f, err := r.FindFile(".goreleaser.yml.plush"); err == nil {

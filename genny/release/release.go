@@ -1,11 +1,11 @@
 package release
 
 import (
+	"fmt"
 	"os/exec"
 
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/release/internal/errx"
-	"github.com/pkg/errors"
 )
 
 func New(opts *Options) (*genny.Generator, error) {
@@ -16,7 +16,7 @@ func New(opts *Options) (*genny.Generator, error) {
 	}
 
 	if _, err := exec.LookPath("git"); err != nil {
-		return g, errors.New("git must be installed")
+		return g, fmt.Errorf("git must be installed")
 	}
 
 	g.RunFn(WriteVersionFile(opts))

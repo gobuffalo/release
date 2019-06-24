@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"github.com/gobuffalo/envy"
-	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )
 
@@ -62,7 +61,7 @@ var doctorCmd = &cobra.Command{
 		}
 
 		if found {
-			return errors.New("your system is NOT ready to release")
+			return fmt.Errorf("your system is NOT ready to release")
 		}
 
 		fmt.Println("your system is ready to release")

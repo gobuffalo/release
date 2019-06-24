@@ -1,11 +1,11 @@
 package initgen
 
 import (
+	"fmt"
 	"os"
 	"path/filepath"
 
 	"github.com/gobuffalo/release/genny/makefile"
-	"github.com/pkg/errors"
 )
 
 type Options struct {
@@ -18,7 +18,7 @@ type Options struct {
 // Validate that options are usuable
 func (opts *Options) Validate() error {
 	if len(opts.Root) == 0 {
-		return errors.New("root can not be empty")
+		return fmt.Errorf("root can not be empty")
 	}
 	if len(opts.Version) == 0 {
 		opts.Version = "v0.0.1"
@@ -28,7 +28,7 @@ func (opts *Options) Validate() error {
 	}
 	if len(opts.MainFile) > 0 {
 		if filepath.Ext(opts.MainFile) != ".go" {
-			return errors.Errorf("%s is not a .go file", opts.MainFile)
+			return fmt.Errorf("%s is not a .go file", opts.MainFile)
 		}
 	} else {
 		if _, err := os.Stat(filepath.Join(opts.Root, "main.go")); err == nil {

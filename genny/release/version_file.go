@@ -2,6 +2,7 @@ package release
 
 import (
 	"bytes"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -12,7 +13,6 @@ import (
 	"github.com/gobuffalo/genny/gogen"
 	"github.com/gobuffalo/genny/plushgen"
 	"github.com/gobuffalo/plush"
-	"github.com/pkg/errors"
 )
 
 var versionRx = regexp.MustCompile("[const|var] [vV]ersion = ([`\"].*[`\"])")
@@ -24,7 +24,7 @@ func WriteVersionFile(opts *Options) genny.RunFn {
 		}
 
 		if len(opts.Version) == 0 {
-			return errors.New("version can not be blank")
+			return fmt.Errorf("version can not be blank")
 		}
 
 		f, err := r.FindFile(opts.VersionFile)
