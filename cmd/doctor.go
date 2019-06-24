@@ -33,7 +33,7 @@ var doctorCmd = &cobra.Command{
 			c := exec.Command("git", "version")
 			b, err := c.CombinedOutput()
 			if err != nil {
-				return errors.WithStack(err)
+				return err
 			}
 			gv := strings.TrimSpace(string(b))
 			fmt.Printf("Git is installed: %s (%s)\n", p, gv)
@@ -51,7 +51,7 @@ var doctorCmd = &cobra.Command{
 				c := exec.Command("goreleaser", "-v")
 				b, err := c.CombinedOutput()
 				if err != nil {
-					return errors.WithStack(err)
+					return err
 				}
 				gv := strings.TrimSpace(string(b))
 				fmt.Printf("Goreleaser is installed: %s (%s)\n", p, gv)

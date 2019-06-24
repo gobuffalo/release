@@ -35,7 +35,7 @@ func (opts *Options) Validate() error {
 	}
 	v, err := semver.NewVersion(opts.Version)
 	if err != nil {
-		return errors.WithStack(err)
+		return err
 	}
 	opts.semVersion = v
 	if len(opts.Branch) == 0 {

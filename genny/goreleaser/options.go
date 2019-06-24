@@ -31,7 +31,7 @@ func (opts *Options) Validate() error {
 	if len(opts.BrewOwner) == 0 {
 		user, err := user.Current()
 		if err != nil {
-			return errors.WithStack(err)
+			return err
 		}
 		opts.BrewOwner = user.Username
 	}

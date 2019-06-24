@@ -7,7 +7,6 @@ import (
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/release/genny/initgen"
 	"github.com/gobuffalo/release/genny/makefile"
-	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )
 
@@ -36,7 +35,7 @@ var initCmd = &cobra.Command{
 
 		gg, err := initgen.New(opts)
 		if err != nil {
-			return errors.WithStack(err)
+			return err
 		}
 		run.WithGroup(gg)
 

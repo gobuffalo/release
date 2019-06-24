@@ -9,14 +9,13 @@ import (
 	"github.com/gobuffalo/release/genny/goreleaser"
 	"github.com/gobuffalo/release/genny/makefile"
 	"github.com/gobuffalo/release/genny/release"
-	"github.com/pkg/errors"
 )
 
 func New(opts *Options) (*genny.Group, error) {
 	gg := &genny.Group{}
 
 	if err := opts.Validate(); err != nil {
-		return gg, errors.WithStack(err)
+		return gg, err
 	}
 	g := genny.New()
 	g.Transformer(genny.Dot())
@@ -27,7 +26,7 @@ func New(opts *Options) (*genny.Group, error) {
 		Root: opts.Root,
 	})
 	if err != nil {
-		return gg, errors.WithStack(err)
+		return gg, err
 	}
 	gg.Add(g)
 
@@ -45,7 +44,7 @@ func New(opts *Options) (*genny.Group, error) {
 	// set up go mods if enabled
 	g, err = gomods.Init("", opts.Root)
 	if err != nil {
-		return gg, errors.WithStack(err)
+		return gg, err
 	}
 	gg.Add(g)
 
@@ -53,7 +52,7 @@ func New(opts *Options) (*genny.Group, error) {
 		Force: opts.Force,
 	})
 	if err != nil {
-		return gg, errors.WithStack(err)
+		return gg, err
 	}
 	gg.Add(g)
 
@@ -66,14 +65,14 @@ func New(opts *Options) (*genny.Group, error) {
 	// write a new makefile
 	g, err = makefile.New(opts.Options)
 	if err != nil {
-		return gg, errors.WithStack(err)
+		return gg, err
 	}
 	gg.Add(g)
 
 	// generate a license
 	g, err = licenser.New(&licenser.Options{})
 	if err != nil {
-		return gg, errors.WithStack(err)
+		return gg, err
 	}
 	gg.Add(g)
 
@@ -85,7 +84,7 @@ func New(opts *Options) (*genny.Group, error) {
 			Root:     opts.Root,
 		})
 		if err != nil {
-			return gg, errors.WithStack(err)
+			return gg, err
 		}
 		gg.Add(g)
 	}
@@ -93,7 +92,7 @@ func New(opts *Options) (*genny.Group, error) {
 	// run go mod tidy again at the end
 	g, err = gomods.Tidy(opts.Root, false)
 	if err != nil {
-		return gg, errors.WithStack(err)
+		return gg, err
 	}
 	gg.Add(g)
 	return gg, nil

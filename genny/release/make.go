@@ -10,7 +10,6 @@ import (
 	"strings"
 
 	"github.com/gobuffalo/genny"
-	"github.com/pkg/errors"
 )
 
 func makeInstall(r *genny.Runner) error {
@@ -39,7 +38,7 @@ func makeRun(target string, r *genny.Runner) error {
 			r.Logger.Infof("No target detected so skipping: make %s", target)
 			return nil
 		}
-		return errors.WithStack(err)
+		return err
 	}
 	return nil
 }

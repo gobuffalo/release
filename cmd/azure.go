@@ -5,7 +5,6 @@ import (
 
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/release/genny/azure"
-	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )
 
@@ -27,7 +26,7 @@ var azureCmd = &cobra.Command{
 
 		opts := azureOptions.Options
 		if err := run.WithNew(azure.New(opts)); err != nil {
-			return errors.WithStack(err)
+			return err
 		}
 
 		return run.Run()

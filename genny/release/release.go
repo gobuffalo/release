@@ -4,6 +4,7 @@ import (
 	"os/exec"
 
 	"github.com/gobuffalo/genny"
+	"github.com/gobuffalo/release/internal/errx"
 	"github.com/pkg/errors"
 )
 
@@ -11,7 +12,7 @@ func New(opts *Options) (*genny.Generator, error) {
 	g := genny.New()
 
 	if err := opts.Validate(); err != nil {
-		return g, errors.WithStack(err)
+		return g, err
 	}
 
 	if _, err := exec.LookPath("git"); err != nil {
@@ -46,7 +47,7 @@ func New(opts *Options) (*genny.Generator, error) {
 func pushRelease(opts *Options) genny.RunFn {
 	return func(r *genny.Runner) error {
 		_, err := releaserFile(r)
-		if errors.Cause(err) == errFileNotFound {
+		if errx.Unwrap(err) == errFileNotFound {
 			return tagRelease(opts)(r)
 		}
 		return runGoreleaser(opts)(r)

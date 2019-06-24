@@ -7,7 +7,6 @@ import (
 	"github.com/gobuffalo/genny/plushgen"
 	"github.com/gobuffalo/packr/v2"
 	"github.com/gobuffalo/plush"
-	"github.com/pkg/errors"
 )
 
 func New(opts *Options) (*genny.Generator, error) {
@@ -16,11 +15,11 @@ func New(opts *Options) (*genny.Generator, error) {
 
 	g.Command(exec.Command("git", "init"))
 	if err := opts.Validate(); err != nil {
-		return g, errors.WithStack(err)
+		return g, err
 	}
 
 	if err := g.Box(packr.New("release:genny/git", "../git/templates")); err != nil {
-		return g, errors.WithStack(err)
+		return g, err
 	}
 	ctx := plush.NewContext()
 	ctx.Set("opts", opts)

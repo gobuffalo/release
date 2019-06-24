@@ -10,6 +10,7 @@ import (
 	"github.com/gobuffalo/genny/gitgen"
 	"github.com/gobuffalo/genny/plushgen"
 	"github.com/gobuffalo/plush"
+	"github.com/gobuffalo/release/internal/errx"
 	"github.com/pkg/errors"
 )
 
@@ -29,11 +30,11 @@ func runGoreleaser(opts *Options) genny.RunFn {
 	return func(r *genny.Runner) error {
 		gy, err := releaserFile(r)
 		if err != nil {
-			if errors.Cause(err) == errFileNotFound {
+			if errx.Unwrap(err) == errFileNotFound {
 				r.Logger.Info("No .goreleaser.yml(.plush) detected so skipping goreleaser step")
 				return nil
 			}
-			return errors.WithStack(err)
+			return err
 		}
 
 		ctx := plush.NewContext()
@@ -48,26 +49,26 @@ func runGoreleaser(opts *Options) genny.RunFn {
 		t := plushgen.Transformer(ctx)
 		f, err := t.Transform(gy)
 		if err != nil {
-			return errors.WithStack(err)
+			return err
 		}
 
 		if err := r.File(genny.NewFile(f.Name(), strings.NewReader(warningLabel+f.String()))); err != nil {
-			return errors.WithStack(err)
+			return err
 		}
 
 		if err := gitgen.Run("add", ".goreleaser.yml")(r); err != nil {
-			if errors.Cause(err) != gitgen.ErrWorkingTreeClean {
-				return errors.WithStack(err)
+			if errx.Unwrap(err) != gitgen.ErrWorkingTreeClean {
+				return err
 			}
 		}
 		if err := gitgen.Run("commit", "-m", "generated goreleaser", ".goreleaser.yml")(r); err != nil {
-			if errors.Cause(err) != gitgen.ErrWorkingTreeClean {
-				return errors.WithStack(err)
+			if errx.Unwrap(err) != gitgen.ErrWorkingTreeClean {
+				return err
 			}
 		}
 
 		if err := tagRelease(opts)(r); err != nil {
-			return errors.WithStack(err)
+			return err
 		}
 
 		c := exec.Command("goreleaser")
@@ -75,7 +76,7 @@ func runGoreleaser(opts *Options) genny.RunFn {
 			c.Args = append(c.Args, "--rm-dist")
 		}
 		if err := r.Exec(c); err != nil {
-			return errors.WithStack(err)
+			return err
 		}
 		return nil
 	}
