@@ -1,21 +1,22 @@
 package release
 
 import (
+	"fmt"
 	"os/exec"
 
 	"github.com/gobuffalo/genny"
-	"github.com/pkg/errors"
+	"github.com/gobuffalo/release/internal/errx"
 )
 
 func New(opts *Options) (*genny.Generator, error) {
 	g := genny.New()
 
 	if err := opts.Validate(); err != nil {
-		return g, errors.WithStack(err)
+		return g, err
 	}
 
 	if _, err := exec.LookPath("git"); err != nil {
-		return g, errors.New("git must be installed")
+		return g, fmt.Errorf("git must be installed")
 	}
 
 	g.RunFn(WriteVersionFile(opts))
@@ -46,7 +47,7 @@ func New(opts *Options) (*genny.Generator, error) {
 func pushRelease(opts *Options) genny.RunFn {
 	return func(r *genny.Runner) error {
 		_, err := releaserFile(r)
-		if errors.Cause(err) == errFileNotFound {
+		if errx.Unwrap(err) == errFileNotFound {
 			return tagRelease(opts)(r)
 		}
 		return runGoreleaser(opts)(r)

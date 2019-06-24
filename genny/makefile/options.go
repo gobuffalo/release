@@ -1,9 +1,8 @@
 package makefile
 
 import (
+	"fmt"
 	"path/filepath"
-
-	"github.com/pkg/errors"
 )
 
 type Options struct {
@@ -26,7 +25,7 @@ func (opts *Options) Validate() error {
 	}
 	if len(opts.MainFile) > 0 {
 		if filepath.Ext(opts.MainFile) != ".go" {
-			return errors.Errorf("%s is not a .go file", opts.MainFile)
+			return fmt.Errorf("%s is not a .go file", opts.MainFile)
 		}
 		opts.BuildPath = filepath.Dir(opts.MainFile)
 		if len(opts.BuildPath) > 0 {
@@ -34,7 +33,7 @@ func (opts *Options) Validate() error {
 		}
 	}
 	if len(opts.Root) == 0 {
-		return errors.New("root can not be empty")
+		return fmt.Errorf("root can not be empty")
 	}
 	return nil
 }

@@ -6,7 +6,6 @@ import (
 	"strings"
 
 	"github.com/gobuffalo/genny"
-	"github.com/pkg/errors"
 )
 
 func commit(opts *Options) genny.RunFn {
@@ -16,7 +15,7 @@ func commit(opts *Options) genny.RunFn {
 		check.Stdout = bb
 		check.Stderr = bb
 		if err := r.Exec(check); err != nil {
-			return errors.WithStack(err)
+			return err
 		}
 		x := strings.TrimSpace(bb.String())
 		if strings.Contains(x, "nothing to commit") {
@@ -25,12 +24,12 @@ func commit(opts *Options) genny.RunFn {
 
 		c := exec.Command("git", "add", ".")
 		if err := r.Exec(c); err != nil {
-			return errors.WithStack(err)
+			return err
 		}
 
 		c = exec.Command("git", "commit", "-m", "version bump: "+opts.Version)
 		if err := r.Exec(c); err != nil {
-			return errors.WithStack(err)
+			return err
 		}
 		return nil
 	}

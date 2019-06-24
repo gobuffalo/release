@@ -10,7 +10,6 @@ import (
 
 	"github.com/gobuffalo/genny"
 	"github.com/gobuffalo/release/genny/release"
-	"github.com/pkg/errors"
 	"github.com/spf13/cobra"
 )
 
@@ -45,7 +44,7 @@ var rootCmd = &cobra.Command{
 			var err error
 			opts.Version, err = askForVersion()
 			if err != nil {
-				return errors.WithStack(err)
+				return err
 			}
 		}
 
@@ -56,7 +55,7 @@ var rootCmd = &cobra.Command{
 
 		g, err := release.New(opts)
 		if err != nil {
-			return errors.WithStack(err)
+			return err
 		}
 		run.With(g)
 
@@ -72,7 +71,7 @@ var rootCmd = &cobra.Command{
 			if err := run.Exec(c); err != nil {
 				run.Logger.Error(err)
 			}
-			return errors.WithStack(err)
+			return err
 		}
 		return nil
 	},
@@ -90,7 +89,7 @@ func askForVersion() (string, error) {
 	cmd := exec.Command("git", "tag", "--sort", "-creatordate")
 	b, err := cmd.CombinedOutput()
 	if err != nil {
-		return "", errors.WithStack(err)
+		return "", err
 	}
 
 	lines := strings.Split(string(b), "\n")
@@ -105,7 +104,7 @@ func askForVersion() (string, error) {
 	fmt.Print("Enter version number (vx.x.x): ")
 	v, err := r.ReadString('\n')
 	if err != nil {
-		return "", errors.WithStack(err)
+		return "", err
 	}
 	v = strings.TrimSpace(v)
 	return v, nil

@@ -2,6 +2,7 @@ package release
 
 import (
 	"bytes"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -9,10 +10,9 @@ import (
 	"strings"
 
 	"github.com/gobuffalo/genny"
-	"github.com/gobuffalo/genny/movinglater/gotools"
+	"github.com/gobuffalo/genny/gogen"
+	"github.com/gobuffalo/genny/plushgen"
 	"github.com/gobuffalo/plush"
-	"github.com/gobuffalo/plushgen"
-	"github.com/pkg/errors"
 )
 
 var versionRx = regexp.MustCompile("[const|var] [vV]ersion = ([`\"].*[`\"])")
@@ -24,14 +24,14 @@ func WriteVersionFile(opts *Options) genny.RunFn {
 		}
 
 		if len(opts.Version) == 0 {
-			return errors.New("version can not be blank")
+			return fmt.Errorf("version can not be blank")
 		}
 
 		f, err := r.FindFile(opts.VersionFile)
 		if err != nil {
 			f, err = defaultVersionFile(opts.VersionFile)
 			if err != nil {
-				return errors.WithStack(err)
+				return err
 			}
 		}
 
@@ -65,7 +65,7 @@ func defaultVersionFile(name string) (genny.File, error) {
 	files, err := ioutil.ReadDir(dir)
 	_, ok := err.(*os.PathError)
 	if err != nil && !ok {
-		return nil, errors.WithStack(err)
+		return nil, err
 	}
 	var pkg string
 	if len(files) == 0 {
@@ -81,12 +81,12 @@ func defaultVersionFile(name string) (genny.File, error) {
 			}
 			b, err := ioutil.ReadFile(fi.Name())
 			if err != nil {
-				return nil, errors.WithStack(err)
+				return nil, err
 			}
 			xf := genny.NewFile(fi.Name(), bytes.NewReader(b))
-			pkg, err = gotools.PackageName(xf)
+			pkg, err = gogen.PackageName(xf)
 			if err != nil {
-				return nil, errors.WithStack(err)
+				return nil, err
 			}
 			break
 		}
@@ -97,7 +97,7 @@ func defaultVersionFile(name string) (genny.File, error) {
 	if len(pkg) == 0 {
 		pwd, err := os.Getwd()
 		if err != nil {
-			return f, errors.WithStack(err)
+			return f, err
 		}
 		pkg = filepath.Base(pwd)
 	}
@@ -107,7 +107,7 @@ func defaultVersionFile(name string) (genny.File, error) {
 	t := plushgen.Transformer(ctx)
 	f, err = t.Transform(f)
 	if err != nil {
-		return f, errors.WithStack(err)
+		return f, err
 	}
 	return f, nil
 }
