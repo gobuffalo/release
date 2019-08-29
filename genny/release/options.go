@@ -31,6 +31,10 @@ func (opts *Options) Validate() error {
 		opts.Version = "v0.0.1"
 	}
 
+	if !strings.HasPrefix(opts.Version, "v") {
+		opts.Version = "v" + opts.Version
+	}
+
 	v, err := semver.NewVersion(strings.TrimPrefix(opts.Version, "v"))
 	if err != nil {
 		return err
