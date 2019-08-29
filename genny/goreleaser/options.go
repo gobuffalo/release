@@ -2,8 +2,10 @@ package goreleaser
 
 import (
 	"fmt"
-	"os/user"
+	"path"
 	"path/filepath"
+
+	"github.com/gobuffalo/here"
 )
 
 type Options struct {
@@ -28,11 +30,14 @@ func (opts *Options) Validate() error {
 	}
 
 	if len(opts.BrewOwner) == 0 {
-		user, err := user.Current()
+		info, err := here.Current()
 		if err != nil {
 			return err
 		}
-		opts.BrewOwner = user.Username
+
+		name := path.Dir(info.ImportPath)
+		opts.BrewOwner = path.Base(name)
+
 	}
 	if len(opts.MainFile) > 0 {
 		if filepath.Ext(opts.MainFile) != ".go" {
