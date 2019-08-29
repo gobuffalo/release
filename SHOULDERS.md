@@ -11,6 +11,8 @@ Thank you to the following **GIANTS**:
 
 * [github.com/gobuffalo/genny](https://godoc.org/github.com/gobuffalo/genny)
 
+* [github.com/gobuffalo/here](https://godoc.org/github.com/gobuffalo/here)
+
 * [github.com/gobuffalo/licenser](https://godoc.org/github.com/gobuffalo/licenser)
 
 * [github.com/gobuffalo/logger](https://godoc.org/github.com/gobuffalo/logger)
