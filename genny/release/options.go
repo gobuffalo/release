@@ -15,7 +15,7 @@ type Options struct {
 	VersionFile string
 	LegacyPackr bool
 	SkipPackr   bool
-	semVersion  *semver.Version
+	semVersion  semver.Version
 	// add your stuff here
 }
 
@@ -30,10 +30,8 @@ func (opts *Options) Validate() error {
 	if len(opts.Version) == 0 {
 		opts.Version = "v0.0.1"
 	}
-	if !strings.HasPrefix(opts.Version, "v") {
-		opts.Version = "v" + opts.Version
-	}
-	v, err := semver.NewVersion(opts.Version)
+
+	v, err := semver.NewVersion(strings.TrimPrefix(opts.Version, "v"))
 	if err != nil {
 		return err
 	}

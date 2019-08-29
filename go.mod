@@ -3,7 +3,7 @@ module github.com/gobuffalo/release
 go 1.12
 
 require (
-	github.com/Masterminds/semver v1.4.2
+	github.com/Masterminds/semver v1.4.3-0.20190829202958-e21c53f7d696
 	github.com/gobuffalo/envy v1.7.0
 	github.com/gobuffalo/genny v0.3.0
 	github.com/gobuffalo/here v0.2.3
