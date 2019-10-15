@@ -11,36 +11,36 @@ jobs:
   strategy:
     matrix:
       go 1.12 (on):
-        go_version: "1.12.9"
+        go_version: "1.12.10"
         GO111MODULE: "on"
       go 1.12 (off):
-        go_version: "1.12.9"
+        go_version: "1.12.10"
         GO111MODULE: "off"
-      go 1.13 (on):
-        go_version: "1.13"
+      go 1.13.1 (on):
+        go_version: "1.13.1"
         GO111MODULE: "on"
-      go 1.13 (off):
-        go_version: "1.13"
+      go 1.13.1 (off):
+        go_version: "1.13.1"
         GO111MODULE: "off"
   steps:
     - template: azure-tests.yml
 
 - job: macOS
   pool:
-    vmImage: "macOS-10.13"
+    vmImage: "macOS-10.13.1"
   strategy:
     matrix:
       go 1.12 (on):
-        go_version: "1.12.9"
+        go_version: "1.12.10"
         GO111MODULE: "on"
       go 1.12 (off):
-        go_version: "1.12.9"
+        go_version: "1.12.10"
         GO111MODULE: "off"
-      go 1.13 (on):
-        go_version: "1.13"
+      go 1.13.1 (on):
+        go_version: "1.13.1"
         GO111MODULE: "on"
-      go 1.13 (off):
-        go_version: "1.13"
+      go 1.13.1 (off):
+        go_version: "1.13.1"
         GO111MODULE: "off"
   steps:
     - template: azure-tests.yml
@@ -51,16 +51,16 @@ jobs:
   strategy:
     matrix:
       go 1.12 (on):
-        go_version: "1.12.9"
+        go_version: "1.12.10"
         GO111MODULE: "on"
       go 1.12 (off):
-        go_version: "1.12.9"
+        go_version: "1.12.10"
         GO111MODULE: "off"
-      go 1.13 (on):
-        go_version: "1.13"
+      go 1.13.1 (on):
+        go_version: "1.13.1"
         GO111MODULE: "on"
-      go 1.13 (off):
-        go_version: "1.13"
+      go 1.13.1 (off):
+        go_version: "1.13.1"
         GO111MODULE: "off"
   steps:
     - template: azure-tests.yml
