@@ -30,6 +30,11 @@ ci-deps: <%= if (opts.WithPackr) {return "packr"} %>
 ci-test: <%= if (opts.WithPackr) {return "packr"} %>
 	$(GO_BIN) test -tags ${TAGS} -race ./...
 
+cov:
+	$(GO_BIN) test -coverprofile cover.out -tags ${TAGS} ./...
+	go tool cover -html cover.out
+	make tidy
+
 lint:
 	go get github.com/golangci/golangci-lint/cmd/golangci-lint
 	golangci-lint run --enable-all

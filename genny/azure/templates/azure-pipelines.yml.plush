@@ -11,16 +11,16 @@ jobs:
   strategy:
     matrix:
       go 1.12 (on):
-        go_version: "1.12.10"
+        go_version: "1.12.13"
         GO111MODULE: "on"
       go 1.12 (off):
-        go_version: "1.12.10"
+        go_version: "1.12.13"
         GO111MODULE: "off"
-      go 1.13.1 (on):
-        go_version: "1.13.1"
+      go 1.13.4 (on):
+        go_version: "1.13.4"
         GO111MODULE: "on"
-      go 1.13.1 (off):
-        go_version: "1.13.1"
+      go 1.13.4 (off):
+        go_version: "1.13.4"
         GO111MODULE: "off"
   steps:
     - template: azure-tests.yml
@@ -31,16 +31,16 @@ jobs:
   strategy:
     matrix:
       go 1.12 (on):
-        go_version: "1.12.10"
+        go_version: "1.12.13"
         GO111MODULE: "on"
       go 1.12 (off):
-        go_version: "1.12.10"
+        go_version: "1.12.13"
         GO111MODULE: "off"
-      go 1.13.1 (on):
-        go_version: "1.13.1"
+      go 1.13.4 (on):
+        go_version: "1.13.4"
         GO111MODULE: "on"
-      go 1.13.1 (off):
-        go_version: "1.13.1"
+      go 1.13.4 (off):
+        go_version: "1.13.4"
         GO111MODULE: "off"
   steps:
     - template: azure-tests.yml
@@ -51,16 +51,16 @@ jobs:
   strategy:
     matrix:
       go 1.12 (on):
-        go_version: "1.12.10"
+        go_version: "1.12.13"
         GO111MODULE: "on"
       go 1.12 (off):
-        go_version: "1.12.10"
+        go_version: "1.12.13"
         GO111MODULE: "off"
-      go 1.13.1 (on):
-        go_version: "1.13.1"
+      go 1.13.4 (on):
+        go_version: "1.13.4"
         GO111MODULE: "on"
-      go 1.13.1 (off):
-        go_version: "1.13.1"
+      go 1.13.4 (off):
+        go_version: "1.13.4"
         GO111MODULE: "off"
   steps:
     - template: azure-tests.yml

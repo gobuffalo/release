@@ -30,7 +30,8 @@ func (opts *Options) Validate() error {
 	}
 
 	if len(opts.BrewOwner) == 0 {
-		info, err := here.Current()
+		h := here.New()
+		info, err := h.Current()
 		if err != nil {
 			return err
 		}

@@ -33,8 +33,8 @@ github.com/gobuffalo/helpers v0.2.2/go.mod h1:xYbzUdCUpVzLwLnqV8HIjT6hmG0Cs7YIBC
 github.com/gobuffalo/helpers v0.2.4/go.mod h1:NX7v27yxPDOPTgUFYmJ5ow37EbxdoLraucOGvMNawyk=
 github.com/gobuffalo/helpers v0.4.0 h1:DR/iYihrVCXv1cYeIGSK3EZz2CljO+DqDLQPWZAod9c=
 github.com/gobuffalo/helpers v0.4.0/go.mod h1:2q/ZnVxCehM4/y1bNz3+wXsvWvWUY+iTUr7mPC6QqGQ=
-github.com/gobuffalo/here v0.2.3 h1:1xamq7i4CKjGgICCXY0qpxPeXGdB8oVNSevkpqwd5X4=
-github.com/gobuffalo/here v0.2.3/go.mod h1:2a6G14FaAKOGJMK/5UNa4Og/+iyFS5cq3MnlvFR7YDk=
+github.com/gobuffalo/here v0.4.0 h1:TD+FD+jQkp5iNPYEAxT6E+4O8u/pOQJyDjmZNC0+/80=
+github.com/gobuffalo/here v0.4.0/go.mod h1:bTNk/uKZgycuB358iR0D32dI9kHBClBGpXjW2HVHkNo=
 github.com/gobuffalo/licenser v1.4.0 h1:S8WY0nLT9zkBTjFYcbJ0E9MEK7SgE86aMfjsnuThQjY=
 github.com/gobuffalo/licenser v1.4.0/go.mod h1:YkyTh2T/d7KECTh32j65auPV876gkJJk55aAdBfDehg=
 github.com/gobuffalo/logger v0.0.0-20190315122211-86e12af44bc2/go.mod h1:QdxcLw541hSGtBnhUc4gaNIXRjiDppFGaDqzbrBd3v8=
@@ -189,5 +189,6 @@ gopkg.in/fsnotify.v1 v1.4.7/go.mod h1:Tz8NjZHkW78fSQdbUxIjBTcgA1z1m8ZHf0WmKUhAMy
 gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 h1:uRGJdciOHaEIrze2W8Q3AKkepLTh2hOroT7a+7czfdQ=
 gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7/go.mod h1:dt/ZhP58zS4L8KSrWDmTeBkI65Dw0HsyUHuEVlX15mw=
 gopkg.in/yaml.v2 v2.2.1/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
-gopkg.in/yaml.v2 v2.2.2 h1:ZCJp+EgiOT7lHqUV2J862kp8Qj64Jo6az82+3Td9dZw=
 gopkg.in/yaml.v2 v2.2.2/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
+gopkg.in/yaml.v2 v2.2.4 h1:/eiJrUcujPVeJ3xlSWaiNi3uSVmDGBK1pDHUHAnao1I=
+gopkg.in/yaml.v2 v2.2.4/go.mod h1:hI93XBmqTisBFMUTm0b8Fm+jr3Dg1NNxqwp+5A1VGuI=
